@@ -26,11 +26,10 @@ const ONLINE = '\u25CF';
 
 class Sidebar extends Component {
   render() {
+    const {primaryColor, themeType} = this.props;
     const style = {
-      background: this.props.primaryColor,
-      color: this.props.themeType === 'dark'
-        ? 'white'
-        : 'black'
+      background: primaryColor,
+      color: themeType === 'dark' ? 'white' : 'black'
     };
     return (
       <div style={style} className='min-h-100'>
