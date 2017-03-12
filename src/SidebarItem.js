@@ -25,19 +25,19 @@ const ONLINE = '\u25CF';
 function renderPerson(person, i) {
   const isOnline = i % 5 <= 2;
   if (isOnline) {
-    return <div key={i} className='br2 br--right pv1 hover-bg-white-10 pl3'>{ONLINE} {person}</div>;
+    return <div key={i} className='pointer br2 br--right pv1 hover-bg-white-20 o-70 pl3'>{ONLINE} {person}</div>;
   } else {
-    return <div key={i} className='br2 br--right pv1 hover-bg-white-10 pl3 o-70 lh-title'>{OFFLINE} {person}</div>;
+    return <div key={i} className='pointer br2 br--right pv1 hover-bg-white-20 pl3 o-70'>{OFFLINE} {person}</div>;
   }
 }
 
 function renderChannel(channel, i) {
   if (i === 3) {
-    return <div key={i} className='br2 br--right pv1 pl3 bg-black-10 lh-title'># {channel}</div>;
+    return <div key={i} className='pointer br2 br--right pv1 pl3 bg-black-20'># {channel}</div>;
   } else if (i % 4 === 0) {
-    return <div key={i} className='br2 br--right pv1 hover-bg-white-10 pl3 b lh-title'># {channel}</div>;
+    return <div key={i} className='pointer br2 br--right pv1 hover-bg-white-20 pl3 b'># {channel}</div>;
   } else {
-    return <div key={i} className='br2 br--right pv1 hover-bg-white-10 pl3 o-70 lh-title'># {channel}</div>;
+    return <div key={i} className='pointer br2 br--right pv1 hover-bg-white-20 pl3 o-70'># {channel}</div>;
   }
 }
 
