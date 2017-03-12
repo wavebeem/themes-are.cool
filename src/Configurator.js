@@ -9,17 +9,19 @@ class Configurator extends Component {
       onChangeThemeType
     } = this.props;
     return (
-      <div>
-        <label>
-          Color
+      <div className='flex-auto pb4'>
+        <h1 className='bb ph3 pv2 b--black-20 db mt0'>Slack Themes are Cool</h1>
+        <label className='db ph3'>
+          <div className='ttu b mb1'>Color</div>
           <input
             type='text'
+            className='ba b--black-20 br1 pa1 mb3'
             value={primaryColor}
             onChange={onChangePrimaryColor}
           />
         </label>
-        <div>
-          <label>
+        <div className='db ph3'>
+          <label className='db lh-copy'>
             <input
               type='radio'
               name='theme-type'
@@ -27,9 +29,9 @@ class Configurator extends Component {
               checked={themeType === 'dark'}
               onChange={onChangeThemeType}
             />
-            Dark
+            <span className='ml2'>Dark background</span>
           </label>
-          <label>
+          <label className='db lh-copy'>
             <input
               type='radio'
               name='theme-type'
@@ -37,7 +39,7 @@ class Configurator extends Component {
               checked={themeType === 'light'}
               onChange={onChangeThemeType}
             />
-            Light
+            <span className='ml2'>Light background</span>
           </label>
         </div>
       </div>

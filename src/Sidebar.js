@@ -1,4 +1,5 @@
 import React, {Component, PropTypes as PT} from 'react';
+import SidebarItem from './SidebarItem';
 
 const CHANNELS = [
   'general',
@@ -19,10 +20,57 @@ const NAMES = [
   'Oshley Glasher',
   'Bran Bo',
   'Grib McRoy',
+  'Shanna Adras',
+  'Xel Madine',
+  'Auros Green',
+  'Makon Covell',
+  'Robert Driet',
+  'Saubio Tobian',
+  'Candurous Marr',
+  'Surro Starr',
+  'Rayf Mantisa',
+  'Gallegher Lerann',
+  'Eida Zainab',
+  'Francis Kelbier',
+  'Criax Hansol',
+  'Gavyn Qorbin',
+  'Yras Tong',
+  'Lilly Ellison',
+  'Corana Kavos',
+  'Von Wran',
+  'Zyyacah Lionne',
+  'Yulia Lin',
+  'Brenna Anarth',
+  'Garrallach Sayall',
+  'Verdian Tynblade',
+  'Acantha Grupen',
+  'Opuurin Osh',
+  'Mal Aldrecht',
+  'Alluria Creel',
+  'Lara Wan',
+  'Jaryn Malfoy',
+  'Aayla Anin',
+  'Maison Durrun',
+  'Broc Archer',
+  'Grooda Golladio',
+  'Terek Roosh',
+  'Aalya Angavel',
+  'Dar Groman',
+  'Quin Helkosh',
+  'Erisi Kaartinen',
+  'Elgun Jekurra',
+  'Iyel Noth',
+  'Ebeda Ving',
+  'Dei Starwind',
+  'Wodi Dysar',
+  'Yuno Jinn',
+  'Jaina Tuain',
+  'Seit Win-Dell',
+  'Leran Morituri',
+  'Maila Midosea',
+  'Vania Kelemann',
+  'Shivas Endivain',
 ];
-
-const OFFLINE = '\u25CB';
-const ONLINE = '\u25CF';
 
 class Sidebar extends Component {
   render() {
@@ -31,12 +79,18 @@ class Sidebar extends Component {
       background: primaryColor,
       color: themeType === 'dark' ? 'white' : 'black'
     };
+    const channels = CHANNELS.map((c, i) =>
+      <SidebarItem type='channel' index={i} name={c}/>
+    );
+    const people = NAMES.map((p, i) =>
+      <SidebarItem type='person' index={i} name={p}/>
+    );
     return (
-      <div style={style} className='min-h-100'>
-        <div className='ttu'>Channels</div>
-        {CHANNELS.map(channel => <div># {channel}</div>)}
-        <div className='ttu'>Direct Messages</div>
-        {NAMES.map(name => <div>{ONLINE} {name}</div>)}
+      <div style={style} className='min-h-100 pt3 pr3 pb3'>
+        <div className='f6 pl3 mb1 ttu'>Channels</div>
+        {channels}
+        <div className='f6 pl3 mb1 ttu mt4'>Direct Messages</div>
+        {people}
       </div>
     );
   }
