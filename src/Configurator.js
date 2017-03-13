@@ -37,6 +37,7 @@ class Configurator extends Component {
           />
         </label>
         <div className='db ph3 mb3'>
+          <div className='db b ttu'>Text color</div>
           <label className='db lh-copy'>
             <input
               type='radio'
