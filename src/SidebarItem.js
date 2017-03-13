@@ -61,8 +61,26 @@ function renderChannel(channel, i) {
         <div
         style={style}
         key={i}
-        className='pointer br2 br--right pv1 hover-bg-white-20 pl3 b'
-      ># {channel}</div>
+        className='pointer br2 br--right pv1 hover-bg-white-20 pl3'
+      ># <b>{channel}</b></div>
+    );
+  } else if (i % 6 === 0) {
+    return (
+        <div
+        style={style}
+        key={i}
+        className='pointer br2 br--right pv1 hover-bg-white-20 pl3 flex'
+      >
+        <div className='flex-auto'># <b>{channel}</b></div>
+        <div
+          style={{
+            textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)',
+            minWidth: '30px',
+            background: '#eb4d5c'
+          }}
+          className='normal tc br-pill white mr1'
+        >3</div>
+      </div>
     );
   } else {
     return (

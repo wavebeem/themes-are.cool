@@ -6,7 +6,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      primaryColor: '#008800',
+      primaryColor: '#258a4f',
       themeType: 'dark'
     };
     this.onChangePrimaryColor = event => {
