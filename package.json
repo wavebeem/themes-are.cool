@@ -6,7 +6,8 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "tachyons": "^4.6.2",
-    "tachyons-cli": "^1.0.10"
+    "tachyons-cli": "^1.0.10",
+    "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
