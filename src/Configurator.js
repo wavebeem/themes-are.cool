@@ -1,19 +1,17 @@
 import React, {Component, PropTypes as PT} from 'react';
-import TinyColor from 'tinycolor2';
 
 class Configurator extends Component {
   render() {
     const {
       primaryColor,
+      lighterColor,
+      darkerColor,
+      foregroundColor,
+      badgeColor,
       themeType,
       onChangePrimaryColor,
       onChangeThemeType
     } = this.props;
-    // TODO: Move this state to the app and pass it to the sidebar.
-    const badgeColor = '#fc6769';
-    const lighterColor = TinyColor(primaryColor).lighten(8).toString();
-    const darkerColor = TinyColor(primaryColor).darken(8).toString();
-    const foregroundColor = themeType === 'dark' ? '#ffffff' : '#000000';
     const theme = [
       primaryColor, // Column BG
       lighterColor, // Menu BG Hover
@@ -87,10 +85,14 @@ class Configurator extends Component {
 }
 
 Configurator.propTypes = {
-  primaryColor: PT.string,
-  themeType: PT.oneOf(['light', 'dark']),
-  onChangePrimaryColor: PT.func,
-  onChangeThemeType: PT.func,
+  primaryColor: PT.string.isRequired,
+  lighterColor: PT.string.isRequired,
+  darkerColor: PT.string.isRequired,
+  foregroundColor: PT.string.isRequired,
+  badgeColor: PT.string.isRequired,
+  themeType: PT.oneOf(['light', 'dark']).isRequired,
+  onChangePrimaryColor: PT.func.isRequired,
+  onChangeThemeType: PT.func.isRequired,
 };
 
 export default Configurator;

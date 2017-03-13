@@ -14,9 +14,9 @@ class SidebarItem extends Component {
 }
 
 SidebarItem.propTypes = {
-  index: PT.number,
-  name: PT.string,
-  type: PT.oneOf(['person', 'channel']),
+  index: PT.number.isRequired,
+  name: PT.string.isRequired,
+  type: PT.oneOf(['person', 'channel']).isRequired,
 };
 
 const OFFLINE = '\u25CB';
@@ -32,7 +32,6 @@ function renderPerson(person, i) {
     return (
       <div
         style={style}
-        key={i}
         className='pointer br2 br--right pv1 hover-bg-white-20 o-70 pl3'
       >{ONLINE} {person}</div>
     );
@@ -40,7 +39,6 @@ function renderPerson(person, i) {
     return (
       <div
         style={style}
-        key={i}
         className='pointer br2 br--right pv1 hover-bg-white-20 pl3 o-70'
       >{OFFLINE} {person}</div>
     );
@@ -52,23 +50,20 @@ function renderChannel(channel, i) {
     return (
       <div
         style={style}
-        key={i}
         className='pointer br2 br--right pv1 pl3 bg-black-20'
       ># {channel}</div>
     );
   } else if (i % 4 === 0) {
     return (
-        <div
+      <div
         style={style}
-        key={i}
         className='pointer br2 br--right pv1 hover-bg-white-20 pl3'
       ># <b>{channel}</b></div>
     );
   } else if (i % 6 === 0) {
     return (
-        <div
+      <div
         style={style}
-        key={i}
         className='pointer br2 br--right pv1 hover-bg-white-20 pl3 flex'
       >
         <div className='flex-auto'># <b>{channel}</b></div>
@@ -84,9 +79,8 @@ function renderChannel(channel, i) {
     );
   } else {
     return (
-        <div
+      <div
         style={style}
-        key={i}
         className='pointer br2 br--right pv1 hover-bg-white-20 pl3 o-70'
       ># {channel}</div>
     );

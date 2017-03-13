@@ -36,10 +36,10 @@ class Sidebar extends Component {
       color: themeType === 'dark' ? 'white' : 'black'
     };
     const channels = CHANNELS.map((c, i) =>
-      <SidebarItem type='channel' index={i} name={c}/>
+      <SidebarItem type='channel' key={i} index={i} name={c}/>
     );
     const people = NAMES.map((p, i) =>
-      <SidebarItem type='person' index={i} name={p}/>
+      <SidebarItem type='person' key={i} index={i} name={p}/>
     );
     return (
       <div style={style} className='min-h-100 pt3 pr3 pb3'>
@@ -53,8 +53,8 @@ class Sidebar extends Component {
 }
 
 Sidebar.propTypes = {
-  primaryColor: PT.string,
-  themeType: PT.oneOf(['light', 'dark']),
+  primaryColor: PT.string.isRequired,
+  themeType: PT.oneOf(['light', 'dark']).isRequired,
 };
 
 export default Sidebar;
