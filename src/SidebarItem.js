@@ -49,6 +49,9 @@ class SidebarItem extends Component {
         i === 3 ? darkerColor :
         isHovered ? lighterColor :
         null,
+      opacity: (i === 3 || i % 4 === 0 || i % 6 === 0)
+        ? null
+        : '0.7',
       width: '200px',
     };
     const badge = (
@@ -97,7 +100,6 @@ SidebarItem.propTypes = {
   darkerColor: PT.string.isRequired,
   foregroundColor: PT.string.isRequired,
   badgeColor: PT.string.isRequired,
-  themeType: PT.oneOf(['light', 'dark']).isRequired,
 };
 
 export default SidebarItem;

@@ -69,7 +69,7 @@ class Sidebar extends Component {
       />
     );
     return (
-      <div style={style} className='min-h-100 pt3 pr3 pb3'>
+      <div style={style} className='min-h-100 pt3 pr3 pb3 fw2'>
         <div className='o-70 f6 pl3 mb2 ttu'>Channels</div>
         {channels}
         <div className='o-70 f6 pl3 mb2 ttu mt4'>Direct Messages</div>

@@ -4,7 +4,7 @@ import Configurator from './Configurator';
 import Sidebar from './Sidebar';
 
 const badgeColor = '#fc6769';
-const primaryColor = '#258a4f';
+const primaryColor = '#4f2f4c';
 const themeType = 'dark';
 
 class App extends Component {
@@ -22,8 +22,8 @@ class App extends Component {
       const c = TinyColor(event.target.value);
       this.setState({
         primaryColor: c.toHexString(),
-        darkerColor: c.darken(8).toHexString(),
-        lighterColor: c.lighten(8).toHexString(),
+        darkerColor: c.clone().darken(8).toHexString(),
+        lighterColor: c.clone().lighten(8).toHexString(),
       });
     };
     this.onChangeThemeType = event => {
