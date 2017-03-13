@@ -38,16 +38,16 @@ class App extends Component {
     return (
       <div className='flex flex-auto min-vh-100'>
         <Sidebar
-          primaryColor={this.state.primaryColor}
           themeType={this.state.themeType}
+          primaryColor={this.state.primaryColor}
           lighterColor={this.state.lighterColor}
           darkerColor={this.state.darkerColor}
           foregroundColor={this.state.foregroundColor}
           badgeColor={this.state.badgeColor}
         />
         <Configurator
-          primaryColor={this.state.primaryColor}
           themeType={this.state.themeType}
+          primaryColor={this.state.primaryColor}
           lighterColor={this.state.lighterColor}
           darkerColor={this.state.darkerColor}
           foregroundColor={this.state.foregroundColor}
