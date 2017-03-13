@@ -39,7 +39,7 @@ class Configurator extends Component {
             type='text'
             className='ba b--black-20 br1 pa1 mb3 code'
             onFocus={selectAll}
-            value={primaryColor}
+            defaultValue={primaryColor}
             onChange={onChangePrimaryColor}
           />
         </label>

@@ -14,16 +14,16 @@ class App extends Component {
       badgeColor,
       primaryColor,
       themeType,
-      darkerColor: TinyColor(primaryColor).darken(8).toString(),
-      lighterColor: TinyColor(primaryColor).lighten(8).toString(),
+      darkerColor: TinyColor(primaryColor).darken(8).toString('hex6'),
+      lighterColor: TinyColor(primaryColor).lighten(8).toString('hex6'),
       foregroundColor: themeType === 'dark' ? '#ffffff' : '#000000',
     };
     this.onChangePrimaryColor = event => {
       const c = TinyColor(event.target.value);
       this.setState({
-        primaryColor: c.toString(),
-        darkerColor: c.darken(8).toString(),
-        lighterColor: c.lighten(8).toString(),
+        primaryColor: c.toString('hex6'),
+        darkerColor: c.darken(8).toString('hex6'),
+        lighterColor: c.lighten(8).toString('hex6'),
       });
     };
     this.onChangeThemeType = event => {
