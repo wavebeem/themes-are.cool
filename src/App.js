@@ -15,7 +15,9 @@ class App extends Component {
       primaryColor,
       themeType,
       darkerColor: TinyColor(primaryColor).darken(8).toHexString(),
+      darkestColor: TinyColor(primaryColor).darken(16).toHexString(),
       lighterColor: TinyColor(primaryColor).lighten(8).toHexString(),
+      lightestColor: TinyColor(primaryColor).lighten(16).toHexString(),
       foregroundColor: themeType === 'dark' ? '#ffffff' : '#000000',
     };
     this.onChangePrimaryColor = event => {
@@ -23,7 +25,9 @@ class App extends Component {
       this.setState({
         primaryColor: c.toHexString(),
         darkerColor: c.clone().darken(8).toHexString(),
+        darkestColor: c.clone().darken(16).toHexString(),
         lighterColor: c.clone().lighten(8).toHexString(),
+        lightestColor: c.clone().lighten(16).toHexString(),
       });
     };
     this.onChangeThemeType = event => {
@@ -37,21 +41,9 @@ class App extends Component {
   render() {
     return (
       <div className='flex flex-auto min-vh-100'>
-        <Sidebar
-          themeType={this.state.themeType}
-          primaryColor={this.state.primaryColor}
-          lighterColor={this.state.lighterColor}
-          darkerColor={this.state.darkerColor}
-          foregroundColor={this.state.foregroundColor}
-          badgeColor={this.state.badgeColor}
-        />
+        <Sidebar theme={this.state} />
         <Configurator
-          themeType={this.state.themeType}
-          primaryColor={this.state.primaryColor}
-          lighterColor={this.state.lighterColor}
-          darkerColor={this.state.darkerColor}
-          foregroundColor={this.state.foregroundColor}
-          badgeColor={this.state.badgeColor}
+          theme={this.state}
           onChangePrimaryColor={this.onChangePrimaryColor}
           onChangeThemeType={this.onChangeThemeType}
         />

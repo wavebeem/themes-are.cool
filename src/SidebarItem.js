@@ -1,5 +1,6 @@
 import React, {Component, PropTypes as PT} from 'react';
 import C from 'classnames';
+import ThemeType from './prop-types/theme';
 
 const OFFLINE = '\u25CB';
 const ONLINE = '\u25CF';
@@ -12,7 +13,7 @@ class SidebarItem extends Component {
     this.onMouseLeave = () => { this.setState({isHovered: false}); };
   }
   renderPerson(person, i) {
-    const {lighterColor} = this.props;
+    const {lighterColor} = this.props.theme;
     const {isHovered} = this.state;
     const isOnline = i % 5 <= 2;
     const icon = isOnline ? ONLINE : OFFLINE;
@@ -36,7 +37,7 @@ class SidebarItem extends Component {
     );
   }
   renderChannel(channel, i) {
-    const {lighterColor, darkerColor} = this.props;
+    const {lighterColor, darkerColor} = this.props.theme;
     const {isHovered} = this.state;
     const className = C(
       'pointer',
@@ -95,11 +96,7 @@ SidebarItem.propTypes = {
   index: PT.number.isRequired,
   name: PT.string.isRequired,
   type: PT.oneOf(['person', 'channel']).isRequired,
-  primaryColor: PT.string.isRequired,
-  lighterColor: PT.string.isRequired,
-  darkerColor: PT.string.isRequired,
-  foregroundColor: PT.string.isRequired,
-  badgeColor: PT.string.isRequired,
+  theme: ThemeType,
 };
 
 export default SidebarItem;

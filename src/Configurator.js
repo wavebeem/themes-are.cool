@@ -1,18 +1,22 @@
 import React, {Component, PropTypes as PT} from 'react';
+import ThemeType from './prop-types/theme';
 
 class Configurator extends Component {
   render() {
     const {
-      primaryColor,
-      lighterColor,
-      darkerColor,
-      foregroundColor,
-      badgeColor,
-      themeType,
+      theme,
       onChangePrimaryColor,
       onChangeThemeType
     } = this.props;
-    const theme = [
+    const {
+        primaryColor,
+        lighterColor,
+        darkerColor,
+        foregroundColor,
+        badgeColor,
+        themeType,
+    } = theme;
+    const slackTheme = [
       primaryColor, // Column BG
       lighterColor, // Menu BG Hover
       darkerColor, // Active Item
@@ -75,7 +79,7 @@ class Configurator extends Component {
           <input
             onFocus={selectAll}
             onChange={() => {}}
-            value={theme}
+            value={slackTheme}
             className='w-100 ba b--black-20 br1 pa1 mb3 code'
           />
         </label>
@@ -85,12 +89,7 @@ class Configurator extends Component {
 }
 
 Configurator.propTypes = {
-  primaryColor: PT.string.isRequired,
-  lighterColor: PT.string.isRequired,
-  darkerColor: PT.string.isRequired,
-  foregroundColor: PT.string.isRequired,
-  badgeColor: PT.string.isRequired,
-  themeType: PT.oneOf(['light', 'dark']).isRequired,
+  theme: ThemeType,
   onChangePrimaryColor: PT.func.isRequired,
   onChangeThemeType: PT.func.isRequired,
 };

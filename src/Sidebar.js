@@ -1,5 +1,6 @@
-import React, {Component, PropTypes as PT} from 'react';
+import React, {Component} from 'react';
 import SidebarItem from './SidebarItem';
+import ThemeType from './prop-types/theme';
 
 const CHANNELS = [
   'general',
@@ -30,25 +31,15 @@ const NAMES = [
 
 class Sidebar extends Component {
   render() {
-    const {
-      themeType,
-      primaryColor,
-      lighterColor,
-      darkerColor,
-      foregroundColor,
-      badgeColor,
-    } = this.props;
+    const {theme} = this.props;
+    const {primaryColor, themeType} = theme;
     const style = {
       background: primaryColor,
       color: themeType === 'dark' ? 'white' : 'black'
     };
     const channels = CHANNELS.map((c, i) =>
       <SidebarItem
-        primaryColor={primaryColor}
-        lighterColor={lighterColor}
-        darkerColor={darkerColor}
-        foregroundColor={foregroundColor}
-        badgeColor={badgeColor}
+        theme={theme}
         type='channel'
         key={i}
         index={i}
@@ -57,11 +48,7 @@ class Sidebar extends Component {
     );
     const people = NAMES.map((p, i) =>
       <SidebarItem
-        primaryColor={primaryColor}
-        lighterColor={lighterColor}
-        darkerColor={darkerColor}
-        foregroundColor={foregroundColor}
-        badgeColor={badgeColor}
+        theme={theme}
         type='person'
         key={i}
         index={i}
@@ -80,12 +67,7 @@ class Sidebar extends Component {
 }
 
 Sidebar.propTypes = {
-  primaryColor: PT.string.isRequired,
-  lighterColor: PT.string.isRequired,
-  darkerColor: PT.string.isRequired,
-  foregroundColor: PT.string.isRequired,
-  badgeColor: PT.string.isRequired,
-  themeType: PT.oneOf(['light', 'dark']).isRequired,
+  theme: ThemeType,
 };
 
 export default Sidebar;
