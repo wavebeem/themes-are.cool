@@ -2,6 +2,22 @@ import React, {Component, PropTypes as PT} from 'react';
 import ThemeType from './prop-types/theme';
 
 class Configurator extends Component {
+  hoverColor() {
+    const {
+      lighterColor,
+      darkerColor,
+      themeType,
+    } = this.props.theme;
+    return themeType === 'dark' ? lighterColor : darkerColor;
+  }
+  activeColor() {
+    const {
+      lightestColor,
+      darkestColor,
+      themeType,
+    } = this.props.theme;
+    return themeType === 'dark' ? lightestColor : darkestColor;
+  }
   render() {
     const {
       theme,
@@ -10,18 +26,16 @@ class Configurator extends Component {
     } = this.props;
     const {
         primaryColor,
-        lighterColor,
-        darkerColor,
         foregroundColor,
         badgeColor,
         themeType,
     } = theme;
     const slackTheme = [
       primaryColor, // Column BG
-      lighterColor, // Menu BG Hover
-      darkerColor, // Active Item
+      this.hoverColor(), // Menu BG Hover
+      this.activeColor(), // Active Item
       foregroundColor, // Active Item Text
-      lighterColor, // Hover Item
+      this.hoverColor(), // Hover Item
       foregroundColor, // Text Color
       foregroundColor, // Active Presence
       badgeColor, // Mention Badge
