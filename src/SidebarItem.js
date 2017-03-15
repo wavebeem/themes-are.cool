@@ -12,8 +12,23 @@ class SidebarItem extends Component {
     this.onMouseEnter = () => { this.setState({isHovered: true}); };
     this.onMouseLeave = () => { this.setState({isHovered: false}); };
   }
+  selectedColor() {
+    const {
+      themeType,
+      lightestColor,
+      darkestColor,
+    } = this.props.theme;
+    return themeType === 'dark' ? lightestColor : darkestColor;
+  }
+  hoverColor() {
+    const {
+      themeType,
+      lighterColor,
+      darkerColor,
+    } = this.props.theme;
+    return themeType === 'dark' ? lighterColor : darkerColor;
+  }
   renderPerson(person, i) {
-    const {lighterColor} = this.props.theme;
     const {isHovered} = this.state;
     const isOnline = i % 5 <= 2;
     const icon = isOnline ? ONLINE : OFFLINE;
@@ -24,7 +39,7 @@ class SidebarItem extends Component {
       'o-70'
     );
     const style = {
-      background: isHovered ? lighterColor : null,
+      background: isHovered ? this.hoverColor() : null,
       width: '200px',
     };
     return (
@@ -37,7 +52,6 @@ class SidebarItem extends Component {
     );
   }
   renderChannel(channel, i) {
-    const {lighterColor, darkerColor} = this.props.theme;
     const {isHovered} = this.state;
     const className = C(
       'pointer',
@@ -47,8 +61,8 @@ class SidebarItem extends Component {
     );
     const style = {
       background:
-        i === 3 ? darkerColor :
-        isHovered ? lighterColor :
+        i === 3 ? this.selectedColor() :
+        isHovered ? this.hoverColor() :
         null,
       opacity: (i === 3 || i % 4 === 0 || i % 6 === 0)
         ? null
