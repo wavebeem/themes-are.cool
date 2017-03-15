@@ -110,7 +110,7 @@ SidebarItem.propTypes = {
   index: PT.number.isRequired,
   name: PT.string.isRequired,
   type: PT.oneOf(['person', 'channel']).isRequired,
-  theme: ThemeType,
+  theme: ThemeType.isRequired,
 };
 
 export default SidebarItem;

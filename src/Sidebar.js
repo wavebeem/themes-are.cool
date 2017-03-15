@@ -67,7 +67,7 @@ class Sidebar extends Component {
 }
 
 Sidebar.propTypes = {
-  theme: ThemeType,
+  theme: ThemeType.isRequired,
 };
 
 export default Sidebar;

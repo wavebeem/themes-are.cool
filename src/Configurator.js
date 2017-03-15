@@ -89,7 +89,7 @@ class Configurator extends Component {
 }
 
 Configurator.propTypes = {
-  theme: ThemeType,
+  theme: ThemeType.isRequired,
   onChangePrimaryColor: PT.func.isRequired,
   onChangeThemeType: PT.func.isRequired,
 };
