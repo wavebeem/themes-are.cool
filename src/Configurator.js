@@ -80,7 +80,7 @@ class Configurator extends Component {
             onFocus={selectAll}
             onChange={() => {}}
             value={slackTheme}
-            className='w-100 ba b--black-20 br1 pa1 mb3 code'
+            className='border-box w-100 ba b--black-20 br1 pa1 mb3 code'
           />
         </label>
       </div>
