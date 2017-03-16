@@ -65,6 +65,7 @@ class Palette extends Component {
   render() {
     const className = 'mh3 mb3';
     const style = {
+      lineHeight: '0',
       maxWidth: '300px'
     };
     return (
