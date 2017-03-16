@@ -8,28 +8,32 @@ const primaryColor = '#4f2f4c';
 const themeType = 'dark';
 
 class App extends Component {
+  computedColors(color) {
+    const c = TinyColor(color);
+    return {
+      darkerColor: c.clone().darken(10).toHexString(),
+      darkestColor: c.clone().darken(30).toHexString(),
+      lighterColor: TinyColor.mix(c, 'white', 15).toHexString(),
+      lightestColor: TinyColor.mix(c.clone().lighten(15), 'white', 55).toHexString(),
+      foregroundColor: themeType === 'dark' ? '#ffffff' : '#000000',
+    };
+  }
   constructor() {
     super();
-    const c = TinyColor(primaryColor);
     this.state = {
       badgeColor,
       primaryColor,
       themeType,
-      darkerColor: TinyColor.mix(c, 'black', 15).toHexString(),
-      darkestColor: TinyColor.mix(c, 'black', 30).toHexString(),
-      lighterColor: TinyColor.mix(c, 'white', 15).toHexString(),
-      lightestColor: TinyColor.mix(c, 'white', 30).toHexString(),
-      foregroundColor: themeType === 'dark' ? '#ffffff' : '#000000',
     };
+    Object.assign(this.state, this.computedColors(primaryColor));
+
     this.onChangePrimaryColor = event => {
       const c = TinyColor(event.target.value);
-      this.setState({
-        primaryColor: c.toHexString(),
-        darkerColor: TinyColor.mix(c, 'black', 15).toHexString(),
-        darkestColor: TinyColor.mix(c, 'black', 30).toHexString(),
-        lighterColor: TinyColor.mix(c, 'white', 15).toHexString(),
-        lightestColor: TinyColor.mix(c, 'white', 30).toHexString(),
-      });
+      const update = {
+        primaryColor: c.toHexString()
+      };
+      Object.assign(update, this.computedColors(c))
+      this.setState(update);
     };
 
     this.onChangeThemeType = event => {

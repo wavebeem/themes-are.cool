@@ -20,6 +20,10 @@ class SidebarItem extends Component {
     } = this.props.theme;
     return themeType === 'dark' ? lightestColor : darkestColor;
   }
+  selectedTextColor() {
+    const {themeType} = this.props.theme;
+    return themeType === 'dark' ? '#000000' : '#ffffff';
+  }
   hoverColor() {
     const {
       themeType,
@@ -64,6 +68,7 @@ class SidebarItem extends Component {
         i === 3 ? this.selectedColor() :
         isHovered ? this.hoverColor() :
         null,
+      color: i === 3 ? this.selectedTextColor() : null,
       opacity: (i === 3 || i % 4 === 0 || i % 6 === 0)
         ? null
         : '0.7',
@@ -80,7 +85,7 @@ class SidebarItem extends Component {
       >3</div>
     );
     const channelElem = i % 4 === 0 || i % 6 === 0
-      ? <b># {channel}</b>
+      ? <b className='fw6'># {channel}</b>
       : `# ${channel}`;
     return (
       <div

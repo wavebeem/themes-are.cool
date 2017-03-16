@@ -1,5 +1,6 @@
 import React, {Component, PropTypes as PT} from 'react';
 import ThemeType from './prop-types/theme';
+import Palette from './Palette';
 
 class Configurator extends Component {
   hoverColor() {
@@ -18,6 +19,10 @@ class Configurator extends Component {
     } = this.props.theme;
     return themeType === 'dark' ? lightestColor : darkestColor;
   }
+  activeTextColor() {
+    const {themeType} = this.props.theme;
+    return themeType === 'dark' ? '#000000' : '#ffffff';
+  }
   render() {
     const {
       theme,
@@ -34,7 +39,7 @@ class Configurator extends Component {
       primaryColor, // Column BG
       this.hoverColor(), // Menu BG Hover
       this.activeColor(), // Active Item
-      foregroundColor, // Active Item Text
+      this.activeTextColor(), // Active Item Text
       this.hoverColor(), // Hover Item
       foregroundColor, // Text Color
       foregroundColor, // Active Presence
@@ -61,6 +66,10 @@ class Configurator extends Component {
             onChange={onChangePrimaryColor}
           />
         </label>
+        <Palette
+          themeType={themeType}
+          onChangePrimaryColor={onChangePrimaryColor}
+        />
         <div className='db ph3 mb3'>
           <h2 className='db b ttu f6 mv0'>
             Text color
