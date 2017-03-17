@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-# cf_distro = "E1ENR65WLK5LCW"
+cf_distro = "E93Z7L6U42FM7"
 s3_dev = "s3://dev.mockbrian.com"
 s3_prod = "s3://slackthemesare.cool"
 
@@ -28,7 +28,7 @@ end
 if ARGV.include?("-p")
   build
   sync s3_prod
-  # invalidate cf_distro
+  invalidate cf_distro
 else
   build
   sync s3_dev
