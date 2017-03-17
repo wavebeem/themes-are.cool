@@ -45,7 +45,8 @@ class Palette extends Component {
         'bn',
         'code ttl',
         'w-100 border-box',
-        'pointer'
+        'pointer',
+        'inner-focus'
       );
       const style = {
         height: '30px',
@@ -53,13 +54,12 @@ class Palette extends Component {
       };
       const button = (
         <button
-          key={i}
           onClick={f}
           style={style}
           className={className}
         ></button>
       );
-      return <div className='dib w-25'>{button}</div>;
+      return <div key={i} className='dib w-25'>{button}</div>;
     });
   }
   render() {
