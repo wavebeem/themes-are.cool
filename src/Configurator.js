@@ -29,8 +29,7 @@ class Configurator extends Component {
     return themeType === 'dark' ? lightestColor : darkestColor;
   }
   activeTextColor() {
-    const {themeType} = this.props.theme;
-    return themeType === 'dark' ? '#000000' : '#ffffff';
+    return '#ffffff';
   }
   render() {
     const {
