@@ -2,7 +2,16 @@ import React, {Component, PropTypes as PT} from 'react';
 import ThemeType from './prop-types/theme';
 import Palette from './Palette';
 
+const badgeColor = '#fc6769';
+
 class Configurator extends Component {
+  badgeColor() {
+    const {
+      darkerColor,
+      badgeType,
+    } = this.props.theme;
+    return badgeType === 'red' ? badgeColor : darkerColor;
+  }
   hoverColor() {
     const {
       lighterColor,
@@ -26,13 +35,14 @@ class Configurator extends Component {
   render() {
     const {
       theme,
+      onChangeBadgeType,
       onChangePrimaryColor,
       onChangeThemeType
     } = this.props;
     const {
         primaryColor,
         foregroundColor,
-        badgeColor,
+        badgeType,
         themeType,
     } = theme;
     const slackTheme = [
@@ -43,7 +53,7 @@ class Configurator extends Component {
       this.hoverColor(), // Hover Item
       foregroundColor, // Text Color
       foregroundColor, // Active Presence
-      badgeColor, // Mention Badge
+      this.badgeColor(), // Mention Badge
     ].join(',');
     const selectAll = event => {
       event.target.focus();
@@ -81,7 +91,7 @@ class Configurator extends Component {
         />
       </label>
     );
-    const elemRadioButtons = (
+    const elemRadioButtonsText = (
       <div className='db ph3 mb3'>
         <h2 className='db b ttu f6 mv0'>
           Text color
@@ -108,6 +118,33 @@ class Configurator extends Component {
         </label>
       </div>
     );
+    const elemRadioButtonsBadge = (
+      <div className='db ph3 mb3'>
+        <h2 className='db b ttu f6 mv0'>
+          Badge color
+        </h2>
+        <label className='db lh-copy'>
+          <input
+            type='radio'
+            name='badge-type'
+            value='red'
+            checked={badgeType === 'red'}
+            onChange={onChangeBadgeType}
+          />
+          <span className='ml2'>Red badges</span>
+        </label>
+        <label className='db lh-copy'>
+          <input
+            type='radio'
+            name='badge-type'
+            value='themed'
+            checked={badgeType === 'themed'}
+            onChange={onChangeBadgeType}
+          />
+          <span className='ml2'>Themed badges</span>
+        </label>
+      </div>
+    );
     const elemPalette = (
       <Palette
         themeType={themeType}
@@ -123,7 +160,8 @@ class Configurator extends Component {
           </div>
           <div className='flex-auto'>
             {elemPrimaryColor}
-            {elemRadioButtons}
+            {elemRadioButtonsText}
+            {elemRadioButtonsBadge}
             {elemTheme}
           </div>
         </div>
@@ -134,6 +172,7 @@ class Configurator extends Component {
 
 Configurator.propTypes = {
   theme: ThemeType.isRequired,
+  onChangeBadgeType: PT.func.isRequired,
   onChangePrimaryColor: PT.func.isRequired,
   onChangeThemeType: PT.func.isRequired,
 };

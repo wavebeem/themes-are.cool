@@ -3,7 +3,7 @@ import TinyColor from 'tinycolor2';
 import Configurator from './Configurator';
 import Sidebar from './Sidebar';
 
-const badgeColor = '#fc6769';
+const badgeType = 'red';
 const primaryColor = '#4f2f4c';
 const themeType = 'dark';
 
@@ -27,7 +27,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      badgeColor,
+      badgeType,
       primaryColor,
       themeType,
     };
@@ -49,6 +49,12 @@ class App extends Component {
         foregroundColor: themeType === 'dark' ? '#ffffff' : '#000000',
       });
     };
+
+    this.onChangeBadgeType = event => {
+      this.setState({
+        badgeType: event.target.value
+      });
+    }
   }
   render() {
     return (
@@ -56,6 +62,7 @@ class App extends Component {
         <Sidebar theme={this.state} />
         <Configurator
           theme={this.state}
+          onChangeBadgeType={this.onChangeBadgeType}
           onChangePrimaryColor={this.onChangePrimaryColor}
           onChangeThemeType={this.onChangeThemeType}
         />

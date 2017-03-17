@@ -1,9 +1,9 @@
 import {PropTypes as PT} from 'react';
 
 const ThemeType = PT.shape({
-  badgeColor: PT.string.isRequired,
-  primaryColor: PT.string.isRequired,
+  badgeType: PT.oneOf(['red', 'themed']).isRequired,
   themeType: PT.oneOf(['light', 'dark']).isRequired,
+  primaryColor: PT.string.isRequired,
   darkerColor: PT.string.isRequired,
   darkestColor: PT.string.isRequired,
   lighterColor: PT.string.isRequired,

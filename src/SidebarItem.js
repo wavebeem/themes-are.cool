@@ -5,12 +5,21 @@ import ThemeType from './prop-types/theme';
 const OFFLINE = '\u25CB';
 const ONLINE = '\u25CF';
 
+const badgeColor = '#fc6769';
+
 class SidebarItem extends Component {
   constructor() {
     super();
     this.state = {isHovered: false};
     this.onMouseEnter = () => { this.setState({isHovered: true}); };
     this.onMouseLeave = () => { this.setState({isHovered: false}); };
+  }
+  badgeColor() {
+    const {
+      darkerColor,
+      badgeType,
+    } = this.props.theme;
+    return badgeType === 'red' ? badgeColor : darkerColor;
   }
   selectedColor() {
     const {
@@ -78,7 +87,7 @@ class SidebarItem extends Component {
         style={{
           textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)',
           minWidth: '30px',
-          background: '#eb4d5c'
+          background: this.badgeColor()
         }}
         className='normal tc br-pill white mr1'
       >3</div>
