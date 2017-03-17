@@ -41,7 +41,6 @@ class Palette extends Component {
       };
       const className = C(
         themeType === 'dark' ? 'white' : 'black',
-        // 'ba bw1 b--black br1',
         'bn',
         'code ttl',
         'w-100 border-box',
@@ -63,7 +62,7 @@ class Palette extends Component {
     });
   }
   render() {
-    const className = 'mh3 mb3';
+    const className = 'ph3 br b--black-20';
     const style = {
       lineHeight: '0',
       maxWidth: '300px'

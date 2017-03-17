@@ -49,63 +49,84 @@ class Configurator extends Component {
       event.target.focus();
       event.target.select();
     };
-    return (
-      <div className='flex-auto pb4'>
+    const elemHeader = (
         <h1 className='bb ph3 pv2 b--black-20 db mt0'>
           Slack Themes are Cool
         </h1>
-        <label className='db ph3'>
-          <h2 className='ttu b f6 mt0 mb1'>
-            Color
-          </h2>
-          <input
-            type='text'
-            className='ba b--black-20 br1 pa1 mb3 code'
-            onFocus={selectAll}
-            defaultValue={primaryColor}
-            onChange={onChangePrimaryColor}
-          />
-        </label>
-        <Palette
-          themeType={themeType}
-          onChangePrimaryColor={onChangePrimaryColor}
+    );
+    const elemPrimaryColor = (
+      <label className='db ph3'>
+        <h2 className='ttu b f6 mt0 mb1'>
+          Color
+        </h2>
+        <input
+          type='text'
+          className='ba b--black-20 br1 pa1 mb3 code'
+          onFocus={selectAll}
+          defaultValue={primaryColor}
+          onChange={onChangePrimaryColor}
         />
-        <div className='db ph3 mb3'>
-          <h2 className='db b ttu f6 mv0'>
-            Text color
-          </h2>
-          <label className='db lh-copy'>
-            <input
-              type='radio'
-              name='theme-type'
-              value='dark'
-              checked={themeType === 'dark'}
-              onChange={onChangeThemeType}
-            />
-            <span className='ml2'>Light text</span>
-          </label>
-          <label className='db lh-copy'>
-            <input
-              type='radio'
-              name='theme-type'
-              value='light'
-              checked={themeType === 'light'}
-              onChange={onChangeThemeType}
-            />
-            <span className='ml2'>Dark text</span>
-          </label>
-        </div>
-        <label className='db ph3'>
-          <h2 className='b ttu f6 mt0 mb1'>
-            Copy and paste this into Slack
-          </h2>
+      </label>
+    );
+    const elemTheme = (
+      <label className='db ph3'>
+        <h2 className='b ttu f6 mt0 mb1'>
+          Copy and paste this into Slack
+        </h2>
+        <input
+          onFocus={selectAll}
+          onChange={() => {}}
+          value={slackTheme}
+          className='border-box w-100 ba b--black-20 br1 pa1 mb3 code'
+        />
+      </label>
+    );
+    const elemRadioButtons = (
+      <div className='db ph3 mb3'>
+        <h2 className='db b ttu f6 mv0'>
+          Text color
+        </h2>
+        <label className='db lh-copy'>
           <input
-            onFocus={selectAll}
-            onChange={() => {}}
-            value={slackTheme}
-            className='border-box w-100 ba b--black-20 br1 pa1 mb3 code'
+            type='radio'
+            name='theme-type'
+            value='dark'
+            checked={themeType === 'dark'}
+            onChange={onChangeThemeType}
           />
+          <span className='ml2'>Light text</span>
         </label>
+        <label className='db lh-copy'>
+          <input
+            type='radio'
+            name='theme-type'
+            value='light'
+            checked={themeType === 'light'}
+            onChange={onChangeThemeType}
+          />
+          <span className='ml2'>Dark text</span>
+        </label>
+      </div>
+    );
+    const elemPalette = (
+      <Palette
+        themeType={themeType}
+        onChangePrimaryColor={onChangePrimaryColor}
+      />
+    );
+    return (
+      <div className='flex-auto pb4'>
+        {elemHeader}
+        <div className='flex'>
+          <div>
+            {elemPalette}
+          </div>
+          <div className='flex-auto'>
+            {elemPrimaryColor}
+            {elemRadioButtons}
+            {elemTheme}
+          </div>
+        </div>
       </div>
     );
   }
