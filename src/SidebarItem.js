@@ -21,8 +21,7 @@ class SidebarItem extends Component {
     return themeType === 'dark' ? lightestColor : darkestColor;
   }
   selectedTextColor() {
-    const {themeType} = this.props.theme;
-    return themeType === 'dark' ? '#000000' : '#ffffff';
+    return '#ffffff';
   }
   hoverColor() {
     const {

@@ -8,13 +8,19 @@ const primaryColor = '#4f2f4c';
 const themeType = 'dark';
 
 class App extends Component {
+  darken(color, amount) {
+    return TinyColor(color).darken(amount).toHexString();
+  }
+  lighten(color, amount) {
+    const color2 = TinyColor(color).lighten(amount);
+    return TinyColor.mix(color2, 'white', amount).toHexString();
+  }
   computedColors(color) {
-    const c = TinyColor(color);
     return {
-      darkerColor: c.clone().darken(10).toHexString(),
-      darkestColor: c.clone().darken(30).toHexString(),
-      lighterColor: TinyColor.mix(c, 'white', 15).toHexString(),
-      lightestColor: TinyColor.mix(c.clone().lighten(15), 'white', 55).toHexString(),
+      darkerColor: this.darken(color, 10),
+      darkestColor: this.darken(color, 50),
+      lighterColor: this.lighten(color, 5),
+      lightestColor: this.lighten(color, 10),
       foregroundColor: themeType === 'dark' ? '#ffffff' : '#000000',
     };
   }
@@ -28,11 +34,11 @@ class App extends Component {
     Object.assign(this.state, this.computedColors(primaryColor));
 
     this.onChangePrimaryColor = event => {
-      const c = TinyColor(event.target.value);
+      const color = event.target.value;
       const update = {
-        primaryColor: c.toHexString()
+        primaryColor: TinyColor(color).toHexString()
       };
-      Object.assign(update, this.computedColors(c))
+      Object.assign(update, this.computedColors(color))
       this.setState(update);
     };
 
