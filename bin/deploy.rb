@@ -2,10 +2,10 @@
 
 # cf_distro = "E1ENR65WLK5LCW"
 s3_dev = "s3://dev.mockbrian.com"
-# s3_prod = "s3://mockbrian.com"
+s3_prod = "s3://slackthemesare.cool"
 
 def make_favicon
-  # system "convert", "favicon-16.png", "favicon-32.png", "favicon.ico"
+  system "yarn", "run", "favicon"
 end
 
 def build
@@ -28,7 +28,7 @@ end
 if ARGV.include?("-p")
   build
   sync s3_prod
-  invalidate cf_distro
+  # invalidate cf_distro
 else
   build
   sync s3_dev

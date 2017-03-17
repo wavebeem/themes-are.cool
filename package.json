@@ -20,6 +20,7 @@
     "react-scripts": "0.9.5"
   },
   "scripts": {
+    "favicon": "convert favicon/favicon-16.png favicon/favicon-32.png public/favicon.ico",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
