@@ -7,10 +7,10 @@ const badgeColor = '#fc6769';
 class Configurator extends Component {
   badgeColor() {
     const {
-      darkerColor,
+      darkestColor,
       badgeType,
     } = this.props.theme;
-    return badgeType === 'red' ? badgeColor : darkerColor;
+    return badgeType === 'red' ? badgeColor : darkestColor;
   }
   hoverColor() {
     const {
@@ -140,7 +140,7 @@ class Configurator extends Component {
             checked={badgeType === 'themed'}
             onChange={onChangeBadgeType}
           />
-          <span className='ml2'>Themed badges</span>
+          <span className='ml2'>Dark badges</span>
         </label>
       </div>
     );

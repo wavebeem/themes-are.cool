@@ -16,10 +16,10 @@ class SidebarItem extends Component {
   }
   badgeColor() {
     const {
-      darkerColor,
+      darkestColor,
       badgeType,
     } = this.props.theme;
-    return badgeType === 'red' ? badgeColor : darkerColor;
+    return badgeType === 'red' ? badgeColor : darkestColor;
   }
   selectedColor() {
     const {
