@@ -4,7 +4,7 @@ import C from 'classnames';
 
 class Palette extends Component {
   colors() {
-    const weights = ['100', '200', '500', '800'];
+    const weights = ['100', '200', '700', '800'];
     const colors = [
       'red',
       'pink',
@@ -23,12 +23,8 @@ class Palette extends Component {
       'orange',
       'deepOrange',
       'brown',
-      'grey',
       'blueGrey',
-      // 'darkText',
-      // 'lightText',
-      // 'darkIcons',
-      // 'lightIcons',
+      'grey',
     ];
     return colors.map(c => weights.map(w => MC[c][w]))
       .reduce((a, b) => [...a, ...b], []);
