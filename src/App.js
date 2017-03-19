@@ -4,6 +4,7 @@ import Configurator from './Configurator';
 import Sidebar from './Sidebar';
 
 const badgeType = 'red';
+const badgeColor = '#fc6769';
 const primaryColor = '#4f2f4c';
 const themeType = 'dark';
 
@@ -23,12 +24,47 @@ class App extends Component {
     const contrast = TinyColor.readability(color, 'white');
     return contrast < 3 ? 'light' : 'dark';
   }
-  computedColors(color) {
+  badgeColor() {
+    return this.state.badgeType === 'red'
+      ? badgeColor
+      : this.darkestColor();
+  }
+  hoverColor() {
+    return this.state.themeType === 'dark'
+      ? this.lighterColor()
+      : this.darkerColor();
+  }
+  activeColor() {
+    return this.state.themeType === 'dark'
+      ? this.lightestColor()
+      : this.darkestColor();
+  }
+  activeTextColor() {
+    return '#ffffff';
+  }
+  darkerColor() {
+    return this.darken(this.state.primaryColor, 10);
+  }
+  darkestColor() {
+    return this.darken(this.state.primaryColor, 50);
+  }
+  lighterColor() {
+    return this.lighten(this.state.primaryColor, 5);
+  }
+  lightestColor() {
+    return this.lighten(this.state.primaryColor, 10);
+  }
+  computedColors() {
+    const {themeType} = this.state;
     return {
-      darkerColor: this.darken(color, 10),
-      darkestColor: this.darken(color, 50),
-      lighterColor: this.lighten(color, 5),
-      lightestColor: this.lighten(color, 10),
+      darkerColor: this.darkerColor(),
+      darkestColor: this.darkestColor(),
+      lighterColor: this.lighterColor(),
+      lightestColor: this.lightestColor(),
+      activeTextColor: this.activeTextColor(),
+      activeColor: this.activeColor(),
+      hoverColor: this.hoverColor(),
+      badgeColor: this.badgeColor(),
       foregroundColor: themeType === 'dark' ? '#ffffff' : '#000000',
     };
   }
@@ -39,16 +75,16 @@ class App extends Component {
       primaryColor,
       themeType,
     };
-    Object.assign(this.state, this.computedColors(primaryColor));
+    Object.assign(this.state, this.computedColors());
 
     this.onChangePrimaryColor = event => {
       const color = event.target.value;
-      const update = {
+      this.setState({
         primaryColor: TinyColor(color).toHexString(),
         themeType: this.preferredThemeTypeFor(color),
-      };
-      Object.assign(update, this.computedColors(color))
-      this.setState(update);
+      }, () => {
+        this.setState(this.computedColors());
+      });
     };
 
     this.onChangeThemeType = event => {
@@ -56,12 +92,16 @@ class App extends Component {
       this.setState({
         themeType,
         foregroundColor: themeType === 'dark' ? '#ffffff' : '#000000',
+      }, () => {
+        this.setState(this.computedColors());
       });
     };
 
     this.onChangeBadgeType = event => {
       this.setState({
         badgeType: event.target.value
+      }, () => {
+        this.setState(this.computedColors());
       });
     }
   }

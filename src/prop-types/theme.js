@@ -9,6 +9,10 @@ const ThemeType = PT.shape({
   lighterColor: PT.string.isRequired,
   lightestColor: PT.string.isRequired,
   foregroundColor: PT.string.isRequired,
+  hoverColor: PT.string.isRequired,
+  activeColor: PT.string.isRequired,
+  activeTextColor: PT.string.isRequired,
+  badgeColor: PT.string.isRequired,
 });
 
 export default ThemeType;

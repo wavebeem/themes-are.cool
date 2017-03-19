@@ -2,35 +2,7 @@ import React, {Component, PropTypes as PT} from 'react';
 import ThemeType from './prop-types/theme';
 import Palette from './Palette';
 
-const badgeColor = '#fc6769';
-
 class Configurator extends Component {
-  badgeColor() {
-    const {
-      darkestColor,
-      badgeType,
-    } = this.props.theme;
-    return badgeType === 'red' ? badgeColor : darkestColor;
-  }
-  hoverColor() {
-    const {
-      lighterColor,
-      darkerColor,
-      themeType,
-    } = this.props.theme;
-    return themeType === 'dark' ? lighterColor : darkerColor;
-  }
-  activeColor() {
-    const {
-      lightestColor,
-      darkestColor,
-      themeType,
-    } = this.props.theme;
-    return themeType === 'dark' ? lightestColor : darkestColor;
-  }
-  activeTextColor() {
-    return '#ffffff';
-  }
   render() {
     const {
       theme,
@@ -43,16 +15,20 @@ class Configurator extends Component {
         foregroundColor,
         badgeType,
         themeType,
+        hoverColor,
+        activeColor,
+        activeTextColor,
+        badgeColor,
     } = theme;
     const slackTheme = [
       primaryColor, // Column BG
-      this.hoverColor(), // Menu BG Hover
-      this.activeColor(), // Active Item
-      this.activeTextColor(), // Active Item Text
-      this.hoverColor(), // Hover Item
+      hoverColor, // Menu BG Hover
+      activeColor, // Active Item
+      activeTextColor, // Active Item Text
+      hoverColor, // Hover Item
       foregroundColor, // Text Color
       foregroundColor, // Active Presence
-      this.badgeColor(), // Mention Badge
+      badgeColor, // Mention Badge
     ].join(',');
     const selectAll = event => {
       event.target.focus();

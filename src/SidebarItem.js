@@ -5,8 +5,6 @@ import ThemeType from './prop-types/theme';
 const OFFLINE = '\u25CB';
 const ONLINE = '\u25CF';
 
-const badgeColor = '#fc6769';
-
 class SidebarItem extends Component {
   constructor() {
     super();
@@ -14,34 +12,9 @@ class SidebarItem extends Component {
     this.onMouseEnter = () => { this.setState({isHovered: true}); };
     this.onMouseLeave = () => { this.setState({isHovered: false}); };
   }
-  badgeColor() {
-    const {
-      darkestColor,
-      badgeType,
-    } = this.props.theme;
-    return badgeType === 'red' ? badgeColor : darkestColor;
-  }
-  selectedColor() {
-    const {
-      themeType,
-      lightestColor,
-      darkestColor,
-    } = this.props.theme;
-    return themeType === 'dark' ? lightestColor : darkestColor;
-  }
-  selectedTextColor() {
-    return '#ffffff';
-  }
-  hoverColor() {
-    const {
-      themeType,
-      lighterColor,
-      darkerColor,
-    } = this.props.theme;
-    return themeType === 'dark' ? lighterColor : darkerColor;
-  }
   renderPerson(person, i) {
     const {isHovered} = this.state;
+    const {hoverColor} = this.props.theme;
     const isOnline = i % 5 <= 2;
     const icon = isOnline ? ONLINE : OFFLINE;
     const className = C(
@@ -51,7 +24,7 @@ class SidebarItem extends Component {
       'o-70'
     );
     const style = {
-      background: isHovered ? this.hoverColor() : null,
+      background: isHovered ? hoverColor : null,
       width: '200px',
     };
     return (
@@ -69,14 +42,20 @@ class SidebarItem extends Component {
       'pointer',
       'br2 br--right',
       'pv1 pl3',
-      'flex',
+      'flex'
     );
+    const {
+      selectedColor,
+      hoverColor,
+      selectedTextColor,
+      badgeColor,
+    } = this.props.theme;
     const style = {
       background:
-        i === 3 ? this.selectedColor() :
-        isHovered ? this.hoverColor() :
+        i === 3 ? selectedColor :
+        isHovered ? hoverColor :
         null,
-      color: i === 3 ? this.selectedTextColor() : null,
+      color: i === 3 ? selectedTextColor : null,
       opacity: (i === 3 || i % 4 === 0 || i % 6 === 0)
         ? null
         : '0.7',
@@ -87,7 +66,7 @@ class SidebarItem extends Component {
         style={{
           textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)',
           minWidth: '30px',
-          background: this.badgeColor()
+          background: badgeColor
         }}
         className='normal tc br-pill white mr1'
       >3</div>
