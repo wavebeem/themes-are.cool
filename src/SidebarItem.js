@@ -45,17 +45,17 @@ class SidebarItem extends Component {
       'flex'
     );
     const {
-      selectedColor,
+      activeColor,
       hoverColor,
-      selectedTextColor,
+      activeTextColor,
       badgeColor,
     } = this.props.theme;
     const style = {
       background:
-        i === 3 ? selectedColor :
+        i === 3 ? activeColor :
         isHovered ? hoverColor :
         null,
-      color: i === 3 ? selectedTextColor : null,
+      color: i === 3 ? activeTextColor : null,
       opacity: (i === 3 || i % 4 === 0 || i % 6 === 0)
         ? null
         : '0.7',

@@ -25,9 +25,11 @@ class App extends Component {
     return contrast < 3 ? 'light' : 'dark';
   }
   badgeColor() {
-    return this.state.badgeType === 'red'
-      ? badgeColor
-      : this.darkestColor();
+    return (
+      this.state.badgeType === 'red' ? badgeColor :
+      this.state.themeType === 'dark' ? this.darkerColor() :
+      this.darkestColor()
+    );
   }
   hoverColor() {
     return this.state.themeType === 'dark'
