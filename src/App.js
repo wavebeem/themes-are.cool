@@ -8,9 +8,6 @@ const badgeColor = '#fc6769';
 const primaryColor = '#4f2f4c';
 const themeType = 'dark';
 
-// TODO: There's repeated logic in SidebarItem and Configurator, but I'm too
-// lazy to fix it right now. Hah.
-
 class App extends Component {
   darken(color, amount) {
     return TinyColor(color).darken(amount).toHexString();
