@@ -64,7 +64,7 @@ class Configurator extends Component {
         <h2 className='ttu b f6 mt0 mb1'>
           Color
         </h2>
-        <div className='mb2'>
+        <div className='mb3'>
           <ChromePicker
             color={primaryColor}
             disableAlpha={true}

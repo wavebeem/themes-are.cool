@@ -30,7 +30,7 @@ def sync(bucket):
     run(
         'aws', 's3', 'sync',
         '--acl', 'public-read',
-        '_build/',
+        'build/',
         bucket
     )
 
