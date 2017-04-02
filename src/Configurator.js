@@ -1,8 +1,28 @@
 import React, {Component, PropTypes as PT} from 'react';
+import {ChromePicker} from 'react-color';
 import ThemeType from './prop-types/theme';
 import Palette from './Palette';
 
 class Configurator extends Component {
+  constructor() {
+    super();
+    this.state = {
+      colorPickerOpen: false
+    };
+    this.onColorPickerChange = this.onColorPickerChange.bind(this);
+    this.onColorFocus = this.onColorFocus.bind(this);
+    this.onColorBlur = this.onColorBlur.bind(this);
+  }
+  onColorPickerChange({hex}) {
+    const {onChangePrimaryColor} = this.props;
+    onChangePrimaryColor({target: {value: hex}})
+  }
+  onColorFocus() {
+    this.setState({colorPickerOpen: true});
+  }
+  onColorBlur() {
+    this.setState({colorPickerOpen: false});
+  }
   render() {
     const {
       theme,
@@ -35,22 +55,22 @@ class Configurator extends Component {
       event.target.select();
     };
     const elemHeader = (
-        <h1 className='bb ph3 pv2 b--black-20 db mt0'>
-          Slack Themes are Cool
-        </h1>
+      <h1 className='bb pa3 b--black-10 db mt0'>
+        Slack Themes are Cool
+      </h1>
     );
     const elemPrimaryColor = (
       <label className='db ph3'>
         <h2 className='ttu b f6 mt0 mb1'>
           Color
         </h2>
-        <input
-          type='text'
-          className='ba b--black-20 br1 pa1 mb3 code'
-          onFocus={selectAll}
-          defaultValue={primaryColor}
-          onChange={onChangePrimaryColor}
-        />
+        <div className='mb2'>
+          <ChromePicker
+            color={primaryColor}
+            disableAlpha={true}
+            onChange={this.onColorPickerChange}
+          />
+        </div>
       </label>
     );
     const elemTheme = (
@@ -62,7 +82,14 @@ class Configurator extends Component {
           onFocus={selectAll}
           onChange={() => {}}
           value={slackTheme}
-          className='border-box w-100 ba b--black-20 br1 pa1 mb3 code'
+          spellCheck={false}
+          className={`
+            border-box w-100
+            white bg-mid-gray b--black-20
+            ba br2
+            pa2 mb3
+            code
+          `}
         />
       </label>
     );

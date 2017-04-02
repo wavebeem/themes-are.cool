@@ -58,7 +58,7 @@ class Palette extends Component {
     });
   }
   render() {
-    const className = 'ph3 br b--black-20';
+    const className = 'ml3 br1 ba b--black-20';
     const style = {
       lineHeight: '0',
       maxWidth: '300px'
