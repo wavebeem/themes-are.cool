@@ -21,8 +21,8 @@ def run(*args, **kwargs):
 
 
 def build():
-    """Invoke yarn build"""
-    run('yarn', 'build')
+    """Invoke build"""
+    run('npm', 'run', 'build')
 
 
 def sync(bucket):
