@@ -17,7 +17,7 @@ S3_PROD = 's3://slackthemesare.cool'
 
 def run(*args, **kwargs):
     """Run a command using var args"""
-    return subprocess.check_call(args, **kwargs)
+    return subprocess.run(args, check=True, **kwargs)
 
 
 def build():
