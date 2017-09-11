@@ -54,7 +54,7 @@ class Configurator extends Component {
       event.target.focus();
       event.target.select();
     };
-    const radioClass = 'ph2 pv1 br2 db lh-copy hover-bg-light-gray';
+    const radioClass = 'ph2 pv0 br2 db lh-copy hover-bg-light-gray';
     const elemHeader = (
       <h1 className='bb pa3 b--light-gray db mt0'>
         Slack Themes are Cool
@@ -62,7 +62,7 @@ class Configurator extends Component {
     );
     const elemPrimaryColor = (
       <label className='db ph3'>
-        <h2 className='ttu b f6 mt0 mb1'>
+        <h2 className='b ttu f6 mt0 mb1'>
           Color
         </h2>
         <div className='mb3'>
@@ -79,10 +79,11 @@ class Configurator extends Component {
         <h2 className='b ttu f6 mt0 mb1'>
           Copy and paste this into Slack
         </h2>
-        <input
+        <textarea
           onFocus={selectAll}
           onChange={() => {}}
           value={slackTheme}
+          rows={3}
           spellCheck={false}
           className={`
             border-box w-100
@@ -99,7 +100,7 @@ class Configurator extends Component {
     );
     const elemRadioButtonsText = (
       <div className='db ph3 mb3'>
-        <h2 className='db b ttu f6 mv0'>
+        <h2 className='b ttu f6 mv1'>
           Text color
         </h2>
         <label className={radioClass}>
@@ -126,7 +127,7 @@ class Configurator extends Component {
     );
     const elemRadioButtonsBadge = (
       <div className='db ph3 mb3'>
-        <h2 className='db b ttu f6 mv0'>
+        <h2 className='db b ttu f6 mv1'>
           Badge color
         </h2>
         <label className={radioClass}>
@@ -166,8 +167,10 @@ class Configurator extends Component {
           </div>
           <div className='flex-auto'>
             {elemPrimaryColor}
-            {elemRadioButtonsText}
-            {elemRadioButtonsBadge}
+            <div className='flex-l'>
+              {elemRadioButtonsText}
+              {elemRadioButtonsBadge}
+            </div>
             {elemTheme}
           </div>
         </div>
