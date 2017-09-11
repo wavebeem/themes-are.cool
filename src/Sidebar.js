@@ -26,7 +26,6 @@ const NAMES = [
   'Surro Starr',
   'Rayf Mantisa',
   'Gallegher Lerann',
-  'Eida Zainab',
 ];
 
 class Sidebar extends Component {
@@ -55,8 +54,9 @@ class Sidebar extends Component {
         name={p}
       />
     );
+    const className = 'min-h-100 pt3 pb3 fw4 br b--light-gray lh-title';
     return (
-      <div style={style} className='min-h-100 pt3 pb3 fw4 br b--light-gray'>
+      <div style={style} className={className}>
         <div className='o-70 f5 pl3 mb2'>Channels</div>
         {channels}
         <div className='o-70 f5 pl3 mb2 mt4'>Direct Messages</div>

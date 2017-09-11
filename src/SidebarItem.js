@@ -4,6 +4,7 @@ import ThemeType from './prop-types/theme';
 
 const OFFLINE = '\u25CB';
 const ONLINE = '\u25CF';
+const WIDTH = '220px';
 
 class SidebarItem extends Component {
   constructor() {
@@ -25,7 +26,7 @@ class SidebarItem extends Component {
     );
     const style = {
       background: isHovered ? hoverColor : null,
-      width: '200px',
+      width: WIDTH,
     };
     return (
       <div
@@ -58,16 +59,15 @@ class SidebarItem extends Component {
       opacity: (i === 3 || i % 4 === 0 || i % 6 === 0)
         ? null
         : '0.7',
-      width: '200px',
+      width: WIDTH,
     };
     const badge = (
       <div
         style={{
-          textShadow: '0 1px 0 rgba(0, 0, 0, 0.3)',
-          minWidth: '30px',
+          minWidth: '25px',
           background: badgeColor
         }}
-        className='normal tc br-pill white mr1'
+        className='normal tc br-pill white mr1 f6'
       >3</div>
     );
     const channelElem = i % 4 === 0 || i % 6 === 0
