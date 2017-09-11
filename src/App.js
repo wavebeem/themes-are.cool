@@ -106,7 +106,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div className='flex flex-auto min-vh-100'>
+      <div className='sans-serif flex flex-auto min-vh-100'>
         <Sidebar theme={this.state} />
         <Configurator
           theme={this.state}

@@ -54,8 +54,9 @@ class Configurator extends Component {
       event.target.focus();
       event.target.select();
     };
+    const radioClass = 'ph2 pv1 br2 db lh-copy hover-bg-light-gray';
     const elemHeader = (
-      <h1 className='bb pa3 b--black-10 db mt0'>
+      <h1 className='bb pa3 b--light-gray db mt0'>
         Slack Themes are Cool
       </h1>
     );
@@ -85,7 +86,10 @@ class Configurator extends Component {
           spellCheck={false}
           className={`
             border-box w-100
-            white bg-mid-gray b--black-20
+            bg-white
+            glow
+            b--black-20
+            bw1
             ba br2
             pa2 mb3
             code
@@ -98,7 +102,7 @@ class Configurator extends Component {
         <h2 className='db b ttu f6 mv0'>
           Text color
         </h2>
-        <label className='db lh-copy'>
+        <label className={radioClass}>
           <input
             type='radio'
             name='theme-type'
@@ -108,7 +112,7 @@ class Configurator extends Component {
           />
           <span className='ml2'>Light text</span>
         </label>
-        <label className='db lh-copy'>
+        <label className={radioClass}>
           <input
             type='radio'
             name='theme-type'
@@ -125,7 +129,7 @@ class Configurator extends Component {
         <h2 className='db b ttu f6 mv0'>
           Badge color
         </h2>
-        <label className='db lh-copy'>
+        <label className={radioClass}>
           <input
             type='radio'
             name='badge-type'
@@ -135,7 +139,7 @@ class Configurator extends Component {
           />
           <span className='ml2'>Red badges</span>
         </label>
-        <label className='db lh-copy'>
+        <label className={radioClass}>
           <input
             type='radio'
             name='badge-type'
@@ -154,7 +158,7 @@ class Configurator extends Component {
       />
     );
     return (
-      <div className='flex-auto pb4'>
+      <div className='flex-auto pb4 mw8'>
         {elemHeader}
         <div className='flex'>
           <div>

@@ -56,10 +56,10 @@ class Sidebar extends Component {
       />
     );
     return (
-      <div style={style} className='min-h-100 pt3 pr3 pb3 fw4'>
-        <div className='o-70 f6 pl3 mb2 ttu'>Channels</div>
+      <div style={style} className='min-h-100 pt3 pb3 fw4 br b--light-gray'>
+        <div className='o-70 f5 pl3 mb2'>Channels</div>
         {channels}
-        <div className='o-70 f6 pl3 mb2 ttu mt4'>Direct Messages</div>
+        <div className='o-70 f5 pl3 mb2 mt4'>Direct Messages</div>
         {people}
       </div>
     );

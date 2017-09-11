@@ -9,7 +9,7 @@
     "react": "^15.4.2",
     "react-color": "^2.11.4",
     "react-dom": "^15.4.2",
-    "tachyons": "^4.6.2",
+    "tachyons": "^4.8.1",
     "tachyons-cli": "^1.0.10",
     "tinycolor2": "^1.4.1"
   },
@@ -18,7 +18,7 @@
     "eslint": "^3.17.1",
     "eslint-config-react": "^1.1.7",
     "eslint-plugin-react": "^6.10.0",
-    "react-scripts": "0.9.5"
+    "react-scripts": "^0.9.5"
   },
   "scripts": {
     "favicon": "convert favicon/favicon-16.png favicon/favicon-32.png public/favicon.ico",

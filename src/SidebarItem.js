@@ -20,7 +20,7 @@ class SidebarItem extends Component {
     const className = C(
       'pointer',
       'br2 br--right',
-      'pv1 pl3',
+      'pv1 ph3',
       'o-70'
     );
     const style = {
@@ -40,8 +40,7 @@ class SidebarItem extends Component {
     const {isHovered} = this.state;
     const className = C(
       'pointer',
-      'br2 br--right',
-      'pv1 pl3',
+      'pv1 ph3',
       'flex'
     );
     const {
