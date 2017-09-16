@@ -5,6 +5,8 @@ import ThemeType from './prop-types/theme';
 import Footer from './Footer';
 import Palette from './Palette';
 
+function noop() {}
+
 class Configurator extends Component {
   constructor() {
     super();
@@ -88,7 +90,7 @@ class Configurator extends Component {
         </h2>
         <textarea
           onFocus={selectAll}
-          onChange={() => {}}
+          onChange={noop}
           value={slackTheme}
           rows={2}
           spellCheck={false}
