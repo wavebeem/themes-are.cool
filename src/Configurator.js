@@ -62,7 +62,7 @@ class Configurator extends Component {
     const elemHeader = (
       <header className='bb b--light-gray pv2 ph3 mb3'>
         <h1 className='db mt0 mb1 f5'>
-          #ThemesAreCool
+          #themes-are-cool
         </h1>
         <h2 className='db gray ma0 f6 normal'>
           Color code your Slack teams! ✌️

@@ -12,7 +12,7 @@ from argparse import ArgumentParser
 
 CF_DISTRO = 'E93Z7L6U42FM7'
 S3_DEV = 's3://dev.mockbrian.com'
-S3_PROD = 's3://slackthemesare.cool'
+S3_PROD = 's3://themes-are.cool'
 
 
 def run(*args, **kwargs):
