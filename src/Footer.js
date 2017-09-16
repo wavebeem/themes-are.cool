@@ -12,9 +12,9 @@ function Footer(/* props */) {
       <p>
         Copyright © 2017{' '}
         <a
-          className='link dark-blue underline'
+          className='link dark-blue hover-blue underline'
           href='https://mockbrian.com'
-        >Brian Mock</a>
+        >Brian Mock</a> 🤓
       </p>
     </footer>
   );

@@ -65,7 +65,7 @@ class Configurator extends Component {
           #ThemesAreCool
         </h1>
         <h2 className='db gray ma0 f6 normal'>
-          Color code your Slack teams!
+          Color code your Slack teams! ✌️
         </h2>
       </header>
     );
