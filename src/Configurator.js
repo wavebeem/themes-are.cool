@@ -1,6 +1,8 @@
 import React, {Component, PropTypes as PT} from 'react';
 import {ChromePicker} from 'react-color';
+
 import ThemeType from './prop-types/theme';
+import Footer from './Footer';
 import Palette from './Palette';
 
 class Configurator extends Component {
@@ -56,9 +58,14 @@ class Configurator extends Component {
     };
     const radioClass = 'ph2 pv0 br2 db lh-copy hover-bg-light-gray';
     const elemHeader = (
-      <h1 className='bb pa3 b--light-gray db mt0'>
-        Slack Themes are Cool
-      </h1>
+      <header className='bb b--light-gray pv2 ph3 mb3'>
+        <h1 className='db mt0 mb1 f5'>
+          #ThemesAreCool
+        </h1>
+        <h2 className='db gray ma0 f6 normal'>
+          Color code your Slack teams!
+        </h2>
+      </header>
     );
     const elemPrimaryColor = (
       <label className='db ph3'>
@@ -83,7 +90,7 @@ class Configurator extends Component {
           onFocus={selectAll}
           onChange={() => {}}
           value={slackTheme}
-          rows={3}
+          rows={2}
           spellCheck={false}
           className={`
             border-box w-100
@@ -92,7 +99,7 @@ class Configurator extends Component {
             b--black-20
             bw1
             ba br2
-            pa2 mb3
+            pa2
             code
           `}
         />
@@ -159,7 +166,7 @@ class Configurator extends Component {
       />
     );
     return (
-      <div className='flex-auto pb4 mw8'>
+      <div className='flex-auto mw8'>
         {elemHeader}
         <div className='flex'>
           <div>
@@ -172,6 +179,7 @@ class Configurator extends Component {
               {elemRadioButtonsBadge}
             </div>
             {elemTheme}
+            <Footer />
           </div>
         </div>
       </div>

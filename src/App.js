@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import TinyColor from 'tinycolor2';
+
 import Configurator from './Configurator';
 import Sidebar from './Sidebar';
 
