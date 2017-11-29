@@ -37,7 +37,7 @@ class Palette extends Component {
       };
       const className = C(
         themeType === 'dark' ? 'white' : 'black',
-        'bn',
+        'bn br0',
         'code ttl',
         'w-100 border-box',
         'pointer',
