@@ -1,8 +1,8 @@
-import {PropTypes as PT} from 'react';
+import { PropTypes as PT } from "react";
 
 const ThemeType = PT.shape({
-  badgeType: PT.oneOf(['red', 'themed']).isRequired,
-  themeType: PT.oneOf(['light', 'dark']).isRequired,
+  badgeType: PT.oneOf(["red", "themed"]).isRequired,
+  themeType: PT.oneOf(["light", "dark"]).isRequired,
   primaryColor: PT.string.isRequired,
   darkerColor: PT.string.isRequired,
   darkestColor: PT.string.isRequired,
@@ -12,7 +12,7 @@ const ThemeType = PT.shape({
   hoverColor: PT.string.isRequired,
   activeColor: PT.string.isRequired,
   activeTextColor: PT.string.isRequired,
-  badgeColor: PT.string.isRequired,
+  badgeColor: PT.string.isRequired
 });
 
 export default ThemeType;

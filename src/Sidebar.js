@@ -1,65 +1,53 @@
-import React, {Component} from 'react';
-import SidebarItem from './SidebarItem';
-import ThemeType from './prop-types/theme';
+import React, { Component } from "react";
+import SidebarItem from "./SidebarItem";
+import ThemeType from "./prop-types/theme";
 
 const CHANNELS = [
-  'general',
-  'video-games',
-  'running',
-  'archery',
-  'build',
-  'qa',
-  'frontend',
-  'backend',
-  'random',
-  'announcements',
+  "general",
+  "video-games",
+  "running",
+  "archery",
+  "build",
+  "qa",
+  "frontend",
+  "backend",
+  "random",
+  "announcements"
 ];
 
 const NAMES = [
-  'Shanna Adras',
-  'Xel Madine',
-  'Auros Green',
-  'Makon Covell',
-  'Robert Driet',
-  'Saubio Tobian',
-  'Candurous Marr',
-  'Surro Starr',
-  'Rayf Mantisa',
-  'Gallegher Lerann',
+  "Shanna Adras",
+  "Xel Madine",
+  "Auros Green",
+  "Makon Covell",
+  "Robert Driet",
+  "Saubio Tobian",
+  "Candurous Marr",
+  "Surro Starr",
+  "Rayf Mantisa",
+  "Gallegher Lerann"
 ];
 
 class Sidebar extends Component {
   render() {
-    const {theme} = this.props;
-    const {primaryColor, themeType} = theme;
+    const { theme } = this.props;
+    const { primaryColor, themeType } = theme;
     const style = {
       background: primaryColor,
-      color: themeType === 'dark' ? 'white' : 'black'
+      color: themeType === "dark" ? "white" : "black"
     };
-    const channels = CHANNELS.map((c, i) =>
-      <SidebarItem
-        theme={theme}
-        type='channel'
-        key={i}
-        index={i}
-        name={c}
-      />
-    );
-    const people = NAMES.map((p, i) =>
-      <SidebarItem
-        theme={theme}
-        type='person'
-        key={i}
-        index={i}
-        name={p}
-      />
-    );
-    const className = 'min-h-100 pt3 pb3 fw4 br b--light-gray lh-title';
+    const channels = CHANNELS.map((c, i) => (
+      <SidebarItem theme={theme} type="channel" key={i} index={i} name={c} />
+    ));
+    const people = NAMES.map((p, i) => (
+      <SidebarItem theme={theme} type="person" key={i} index={i} name={p} />
+    ));
+    const className = "min-h-100 pt3 pb3 fw4 br b--light-gray lh-title";
     return (
       <div style={style} className={className}>
-        <div className='o-70 f5 pl3 mb2'>Channels</div>
+        <div className="o-70 f5 pl3 mb2">Channels</div>
         {channels}
-        <div className='o-70 f5 pl3 mb2 mt4'>Direct Messages</div>
+        <div className="o-70 f5 pl3 mb2 mt4">Direct Messages</div>
         {people}
       </div>
     );
@@ -67,7 +55,7 @@ class Sidebar extends Component {
 }
 
 Sidebar.propTypes = {
-  theme: ThemeType.isRequired,
+  theme: ThemeType.isRequired
 };
 
 export default Sidebar;

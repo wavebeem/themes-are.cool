@@ -1,9 +1,9 @@
-import React, {Component, PropTypes as PT} from 'react';
-import {ChromePicker} from 'react-color';
+import React, { Component, PropTypes as PT } from "react";
+import { ChromePicker } from "react-color";
 
-import ThemeType from './prop-types/theme';
-import Footer from './Footer';
-import Palette from './Palette';
+import ThemeType from "./prop-types/theme";
+import Footer from "./Footer";
+import Palette from "./Palette";
 
 function noop() {}
 
@@ -17,15 +17,15 @@ class Configurator extends Component {
     this.onColorFocus = this.onColorFocus.bind(this);
     this.onColorBlur = this.onColorBlur.bind(this);
   }
-  onColorPickerChange({hex}) {
-    const {onChangePrimaryColor} = this.props;
-    onChangePrimaryColor({target: {value: hex}})
+  onColorPickerChange({ hex }) {
+    const { onChangePrimaryColor } = this.props;
+    onChangePrimaryColor({ target: { value: hex } });
   }
   onColorFocus() {
-    this.setState({colorPickerOpen: true});
+    this.setState({ colorPickerOpen: true });
   }
   onColorBlur() {
-    this.setState({colorPickerOpen: false});
+    this.setState({ colorPickerOpen: false });
   }
   render() {
     const {
@@ -35,14 +35,14 @@ class Configurator extends Component {
       onChangeThemeType
     } = this.props;
     const {
-        primaryColor,
-        foregroundColor,
-        badgeType,
-        themeType,
-        hoverColor,
-        activeColor,
-        activeTextColor,
-        badgeColor,
+      primaryColor,
+      foregroundColor,
+      badgeType,
+      themeType,
+      hoverColor,
+      activeColor,
+      activeTextColor,
+      badgeColor
     } = theme;
     const slackTheme = [
       primaryColor, // Column BG
@@ -52,29 +52,25 @@ class Configurator extends Component {
       hoverColor, // Hover Item
       foregroundColor, // Text Color
       foregroundColor, // Active Presence
-      badgeColor, // Mention Badge
-    ].join(',');
+      badgeColor // Mention Badge
+    ].join(",");
     const selectAll = event => {
       event.target.focus();
       event.target.select();
     };
-    const radioClass = 'ph2 pv0 br2 db lh-copy hover-bg-light-gray';
+    const radioClass = "ph2 pv0 br2 db lh-copy hover-bg-light-gray";
     const elemHeader = (
-      <header className='bb b--light-gray pv2 ph3 mb3'>
-        <h1 className='db mt0 mb1 f5'>
-          #themes-are-cool
-        </h1>
-        <h2 className='db gray ma0 f6 normal'>
+      <header className="bb b--light-gray pv2 ph3 mb3">
+        <h1 className="db mt0 mb1 f5">#themes-are-cool</h1>
+        <h2 className="db gray ma0 f6 normal">
           Color code your Slack teams! ✌️
         </h2>
       </header>
     );
     const elemPrimaryColor = (
-      <label className='db ph3'>
-        <h2 className='b ttu f6 mt0 mb1'>
-          Color
-        </h2>
-        <div className='mb3'>
+      <label className="db ph3">
+        <h2 className="b ttu f6 mt0 mb1">Color</h2>
+        <div className="mb3">
           <ChromePicker
             color={primaryColor}
             disableAlpha={true}
@@ -84,10 +80,8 @@ class Configurator extends Component {
       </label>
     );
     const elemTheme = (
-      <label className='db ph3'>
-        <h2 className='b ttu f6 mt0 mb1'>
-          Copy and paste this into Slack
-        </h2>
+      <label className="db ph3">
+        <h2 className="b ttu f6 mt0 mb1">Copy and paste this into Slack</h2>
         <textarea
           onFocus={selectAll}
           onChange={noop}
@@ -108,56 +102,52 @@ class Configurator extends Component {
       </label>
     );
     const elemRadioButtonsText = (
-      <div className='db ph3 mb3'>
-        <h2 className='b ttu f6 mv1'>
-          Text color
-        </h2>
+      <div className="db ph3 mb3">
+        <h2 className="b ttu f6 mv1">Text color</h2>
         <label className={radioClass}>
           <input
-            type='radio'
-            name='theme-type'
-            value='dark'
-            checked={themeType === 'dark'}
+            type="radio"
+            name="theme-type"
+            value="dark"
+            checked={themeType === "dark"}
             onChange={onChangeThemeType}
           />
-          <span className='ml2'>Light text</span>
+          <span className="ml2">Light text</span>
         </label>
         <label className={radioClass}>
           <input
-            type='radio'
-            name='theme-type'
-            value='light'
-            checked={themeType === 'light'}
+            type="radio"
+            name="theme-type"
+            value="light"
+            checked={themeType === "light"}
             onChange={onChangeThemeType}
           />
-          <span className='ml2'>Dark text</span>
+          <span className="ml2">Dark text</span>
         </label>
       </div>
     );
     const elemRadioButtonsBadge = (
-      <div className='db ph3 mb3'>
-        <h2 className='db b ttu f6 mv1'>
-          Badge color
-        </h2>
+      <div className="db ph3 mb3">
+        <h2 className="db b ttu f6 mv1">Badge color</h2>
         <label className={radioClass}>
           <input
-            type='radio'
-            name='badge-type'
-            value='red'
-            checked={badgeType === 'red'}
+            type="radio"
+            name="badge-type"
+            value="red"
+            checked={badgeType === "red"}
             onChange={onChangeBadgeType}
           />
-          <span className='ml2'>Red badges</span>
+          <span className="ml2">Red badges</span>
         </label>
         <label className={radioClass}>
           <input
-            type='radio'
-            name='badge-type'
-            value='themed'
-            checked={badgeType === 'themed'}
+            type="radio"
+            name="badge-type"
+            value="themed"
+            checked={badgeType === "themed"}
             onChange={onChangeBadgeType}
           />
-          <span className='ml2'>Dark badges</span>
+          <span className="ml2">Dark badges</span>
         </label>
       </div>
     );
@@ -168,15 +158,13 @@ class Configurator extends Component {
       />
     );
     return (
-      <div className='flex-auto mw8'>
+      <div className="flex-auto mw8">
         {elemHeader}
-        <div className='flex'>
-          <div>
-            {elemPalette}
-          </div>
-          <div className='flex-auto'>
+        <div className="flex">
+          <div>{elemPalette}</div>
+          <div className="flex-auto">
             {elemPrimaryColor}
-            <div className='flex-l'>
+            <div className="flex-l">
               {elemRadioButtonsText}
               {elemRadioButtonsBadge}
             </div>
@@ -193,7 +181,7 @@ Configurator.propTypes = {
   theme: ThemeType.isRequired,
   onChangeBadgeType: PT.func.isRequired,
   onChangePrimaryColor: PT.func.isRequired,
-  onChangeThemeType: PT.func.isRequired,
+  onChangeThemeType: PT.func.isRequired
 };
 
 export default Configurator;
