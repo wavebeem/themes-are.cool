@@ -9,7 +9,7 @@ function Footer(/* props */) {
     <footer className="mh3 mb3 dark-gray f5">
       <p>{slackDisclaimer}</p>
       <p>
-        Copyright © 2017{" "}
+        Copyright &copy; {new Date().getFullYear() + " "}
         <a
           className="link dark-blue hover-blue underline"
           href="https://mockbrian.com"
