@@ -5,8 +5,8 @@ import Configurator from "./Configurator";
 import Sidebar from "./Sidebar";
 
 const badgeType = "red";
-const badgeColor = "#fc6769";
-const primaryColor = "#4f2f4c";
+const badgeColor = "#cd2553";
+const primaryColor = "#3f0e40";
 const themeType = "dark";
 
 class App extends Component {
