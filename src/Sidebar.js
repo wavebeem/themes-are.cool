@@ -54,6 +54,8 @@ class Sidebar extends Component {
   }
 }
 
+Sidebar.displayName = "Sidebar";
+
 Sidebar.propTypes = {
   theme: ThemeType.isRequired
 };

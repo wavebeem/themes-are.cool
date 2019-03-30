@@ -71,6 +71,8 @@ class Palette extends Component {
   }
 }
 
+Palette.displayName = "Palette";
+
 Palette.propTypes = {
   onChangePrimaryColor: PT.func.isRequired,
   themeType: PT.string.isRequired

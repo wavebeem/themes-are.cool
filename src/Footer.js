@@ -23,4 +23,6 @@ function Footer(/* props */) {
   );
 }
 
+Footer.displayName = "Footer";
+
 export default Footer;

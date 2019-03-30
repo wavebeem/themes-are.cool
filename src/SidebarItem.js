@@ -83,6 +83,8 @@ function SidebarItem({ theme, index, name, type }) {
   }
 }
 
+SidebarItem.displayName = "SidebarItem";
+
 SidebarItem.propTypes = {
   index: PT.number.isRequired,
   name: PT.string.isRequired,

@@ -169,6 +169,8 @@ function Configurator({
   );
 }
 
+Configurator.displayName = "Configurator";
+
 Configurator.propTypes = {
   theme: ThemeType.isRequired,
   updateBadgeType: PT.func.isRequired,
