@@ -1,13 +1,12 @@
 import React from "react";
 
-const slackDisclaimer =
-  "This product is not endorsed by, affiliated with, " +
-  "or supported by Slack Technologies, Inc.";
-
 function Footer(/* props */) {
   return (
     <footer className="mh3 mb3 dark-gray f5">
-      <p>{slackDisclaimer}</p>
+      <p>
+        This product is not endorsed by, affiliated with, or supported by Slack
+        Technologies, Inc.
+      </p>
       <p>
         Copyright &copy; {new Date().getFullYear() + " "}
         <a
@@ -16,7 +15,9 @@ function Footer(/* props */) {
         >
           Brian Mock
         </a>{" "}
-        🤓
+        <span role="img" aria-label="nerd face emoji">
+          🤓
+        </span>
       </p>
     </footer>
   );

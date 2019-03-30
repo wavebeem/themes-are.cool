@@ -65,7 +65,7 @@ class Configurator extends Component {
         <h1 className="db mt0 mb1 f5">#themes-are-cool</h1>
         <h2 className="db gray ma0 f6 normal">
           Color code your workspaces!{" "}
-          <span role="img" aria-label="peace out">
+          <span role="img" aria-label="peace out emoji">
             ✌️
           </span>
         </h2>
