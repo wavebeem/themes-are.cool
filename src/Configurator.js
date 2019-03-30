@@ -15,9 +15,6 @@ function Configurator({
   function onChangeBadgeType(event) {
     updateBadgeType(event.target.value);
   }
-  function onChangePrimaryColor(event) {
-    updatePrimaryColor(event.target.value);
-  }
   function onChangeThemeType(event) {
     updateThemeType(event.target.value);
   }
@@ -74,7 +71,10 @@ function Configurator({
   );
   const elemTheme = (
     <label className="db ph3">
-      <h2 className="b ttu f6 mt0 mb1">Copy and paste this into Slack</h2>
+      <h2 className="b ttu f6 mt0 mb1">
+        Send this to any chat room, then click the <q>Switch sidebar theme</q>{" "}
+        button
+      </h2>
       <textarea
         onFocus={selectAll}
         onChange={() => {}}
@@ -145,10 +145,7 @@ function Configurator({
     </div>
   );
   const elemPalette = (
-    <Palette
-      themeType={themeType}
-      onChangePrimaryColor={onChangePrimaryColor}
-    />
+    <Palette themeType={themeType} updatePrimaryColor={updatePrimaryColor} />
   );
   return (
     <div className="flex-auto mw8">
