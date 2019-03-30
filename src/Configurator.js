@@ -63,7 +63,7 @@ class Configurator extends Component {
       <header className="bb b--light-gray pv2 ph3 mb3">
         <h1 className="db mt0 mb1 f5">#themes-are-cool</h1>
         <h2 className="db gray ma0 f6 normal">
-          Color code your Slack teams! ✌️
+          Color code your workspaces! ✌️
         </h2>
       </header>
     );
