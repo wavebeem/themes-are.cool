@@ -8,12 +8,21 @@ import Palette from "./Palette";
 
 function Configurator({
   theme,
-  onChangeBadgeType,
-  onChangePrimaryColor,
-  onChangeThemeType
+  updateBadgeType,
+  updatePrimaryColor,
+  updateThemeType
 }) {
+  function onChangeBadgeType(event) {
+    updateBadgeType(event.target.value);
+  }
+  function onChangePrimaryColor(event) {
+    updatePrimaryColor(event.target.value);
+  }
+  function onChangeThemeType(event) {
+    updateThemeType(event.target.value);
+  }
   function onColorPickerChange({ hex }) {
-    onChangePrimaryColor({ target: { value: hex } });
+    updatePrimaryColor(hex);
   }
   const {
     primaryColor,
@@ -162,9 +171,9 @@ function Configurator({
 
 Configurator.propTypes = {
   theme: ThemeType.isRequired,
-  onChangeBadgeType: PT.func.isRequired,
-  onChangePrimaryColor: PT.func.isRequired,
-  onChangeThemeType: PT.func.isRequired
+  updateBadgeType: PT.func.isRequired,
+  updatePrimaryColor: PT.func.isRequired,
+  updateThemeType: PT.func.isRequired
 };
 
 export default Configurator;
