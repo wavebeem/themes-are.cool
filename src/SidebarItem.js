@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import PT from "prop-types";
 import C from "classnames";
 
@@ -8,20 +8,16 @@ const OFFLINE = "\u25CB";
 const ONLINE = "\u25CF";
 const WIDTH = "220px";
 
-class SidebarItem extends Component {
-  constructor() {
-    super();
-    this.state = { isHovered: false };
-    this.onMouseEnter = () => {
-      this.setState({ isHovered: true });
-    };
-    this.onMouseLeave = () => {
-      this.setState({ isHovered: false });
-    };
-  }
-  renderPerson(person, i) {
-    const { isHovered } = this.state;
-    const { hoverColor } = this.props.theme;
+function SidebarItem({ theme, index, name, type }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const onMouseEnter = () => {
+    setIsHovered(true);
+  };
+  const onMouseLeave = () => {
+    setIsHovered(false);
+  };
+  function renderPerson(person, i) {
+    const { hoverColor } = theme;
     const isOnline = i % 5 <= 2;
     const icon = isOnline ? ONLINE : OFFLINE;
     const className = C("pointer", "br2 br--right", "pv1 ph3", "o-70");
@@ -33,22 +29,16 @@ class SidebarItem extends Component {
       <div
         style={style}
         className={className}
-        onMouseEnter={this.onMouseEnter}
-        onMouseLeave={this.onMouseLeave}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
       >
         {icon} {person}
       </div>
     );
   }
-  renderChannel(channel, i) {
-    const { isHovered } = this.state;
+  function renderChannel(channel, i) {
     const className = C("pointer", "pv1 ph3", "flex");
-    const {
-      activeColor,
-      hoverColor,
-      activeTextColor,
-      badgeColor
-    } = this.props.theme;
+    const { activeColor, hoverColor, activeTextColor, badgeColor } = theme;
     const style = {
       background: i === 3 ? activeColor : isHovered ? hoverColor : null,
       color: i === 3 ? activeTextColor : null,
@@ -76,23 +66,20 @@ class SidebarItem extends Component {
       <div
         style={style}
         className={className}
-        onMouseEnter={this.onMouseEnter}
-        onMouseLeave={this.onMouseLeave}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
       >
         <div className="flex-auto">{channelElem}</div>
         {i % 6 === 0 ? badge : null}
       </div>
     );
   }
-  render() {
-    const { index, name, type } = this.props;
-    if (type === "person") {
-      return this.renderPerson(name, index);
-    } else if (type === "channel") {
-      return this.renderChannel(name, index);
-    } else {
-      throw new Error();
-    }
+  if (type === "person") {
+    return renderPerson(name, index);
+  } else if (type === "channel") {
+    return renderChannel(name, index);
+  } else {
+    throw new Error();
   }
 }
 
