@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+
 import SidebarItem from "./SidebarItem";
 import ThemeType from "./prop-types/theme";
 
@@ -28,30 +29,25 @@ const NAMES = [
   "Gallegher Lerann"
 ];
 
-class Sidebar extends Component {
-  render() {
-    const { theme } = this.props;
-    const { primaryColor, themeType } = theme;
-    const style = {
-      background: primaryColor,
-      color: themeType === "dark" ? "white" : "black"
-    };
-    const channels = CHANNELS.map((c, i) => (
-      <SidebarItem theme={theme} type="channel" key={i} index={i} name={c} />
-    ));
-    const people = NAMES.map((p, i) => (
-      <SidebarItem theme={theme} type="person" key={i} index={i} name={p} />
-    ));
-    const className = "min-h-100 pt3 pb3 fw4 br b--light-gray lh-title";
-    return (
-      <div style={style} className={className}>
-        <div className="o-70 f5 pl3 mb2">Channels</div>
-        {channels}
-        <div className="o-70 f5 pl3 mb2 mt4">Direct Messages</div>
-        {people}
-      </div>
-    );
-  }
+function Sidebar({ theme }) {
+  return (
+    <div
+      style={{
+        background: theme.primaryColor,
+        color: theme.themeType === "dark" ? "white" : "black"
+      }}
+      className={"min-h-100 pt3 pb3 fw4 br b--light-gray lh-title"}
+    >
+      <div className="o-70 f5 pl3 mb2">Channels</div>
+      {CHANNELS.map((c, i) => (
+        <SidebarItem theme={theme} type="channel" key={i} index={i} name={c} />
+      ))}
+      <div className="o-70 f5 pl3 mb2 mt4">Direct Messages</div>
+      {NAMES.map((p, i) => (
+        <SidebarItem theme={theme} type="person" key={i} index={i} name={p} />
+      ))}
+    </div>
+  );
 }
 
 Sidebar.displayName = "Sidebar";
