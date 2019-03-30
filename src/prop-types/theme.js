@@ -1,4 +1,4 @@
-import { PropTypes as PT } from "react";
+import PT from "prop-types";
 
 const ThemeType = PT.shape({
   badgeType: PT.oneOf(["red", "themed"]).isRequired,

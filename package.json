@@ -5,19 +5,16 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "material-colors": "^1.2.6",
-    "react": "^15.4.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
     "react-color": "^2.17.0",
-    "react-dom": "^15.4.2",
+    "react-dom": "^16.8.6",
     "tachyons": "^4.11.1",
     "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
-    "babel-eslint": "^7.1.1",
-    "eslint": "^3.17.1",
-    "eslint-config-react": "^1.1.7",
-    "eslint-plugin-react": "^6.10.0",
     "npm-check": "^5.9.0",
-    "react-scripts": "^0.9.5"
+    "react-scripts": "^2.1.8"
   },
   "scripts": {
     "upgrade": "npm-check -u",
@@ -26,5 +23,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Edge versions",
+    "last 2 Safari versions"
+  ]
 }

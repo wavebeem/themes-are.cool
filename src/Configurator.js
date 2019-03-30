@@ -1,4 +1,5 @@
-import React, { Component, PropTypes as PT } from "react";
+import React, { Component } from "react";
+import PT from "prop-types";
 import { ChromePicker } from "react-color";
 
 import ThemeType from "./prop-types/theme";
@@ -63,7 +64,10 @@ class Configurator extends Component {
       <header className="bb b--light-gray pv2 ph3 mb3">
         <h1 className="db mt0 mb1 f5">#themes-are-cool</h1>
         <h2 className="db gray ma0 f6 normal">
-          Color code your workspaces! ✌️
+          Color code your workspaces!{" "}
+          <span role="img" aria-label="peace out">
+            ✌️
+          </span>
         </h2>
       </header>
     );

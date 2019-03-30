@@ -1,5 +1,7 @@
-import React, { Component, PropTypes as PT } from "react";
+import React, { Component } from "react";
+import PT from "prop-types";
 import C from "classnames";
+
 import ThemeType from "./prop-types/theme";
 
 const OFFLINE = "\u25CB";
