@@ -27,6 +27,11 @@ body {
   scrollbar-color: var(--cool-fg) var(--cool-bg);
 }
 
+.cool-search {
+  border: 1px solid var(--cool-search-border);
+  background: var(--cool-search-bg);
+}
+
 .cool-sidebar {
   background: var(--cool-column-bg);
   color: var(--cool-fg);

@@ -46,11 +46,23 @@ function App() {
   const mentionBadge = "#cd2553";
   const topNavBG = primaryColor;
   const topNavText = activeItemText;
+  const searchBorder = colorLightDark(
+    primaryColor,
+    "rgba(255, 255, 255, 0.2)",
+    "rgba(0, 0, 0, 0.2)"
+  );
+  const searchBG = colorLightDark(
+    primaryColor,
+    "rgba(255, 255, 255, 0.1)",
+    "rgba(0, 0, 0, 0.05)"
+  );
   const theme = {
     themeType,
     bg,
     fg,
     border,
+    searchBorder,
+    searchBG,
     columnBG,
     activeItem,
     activeItemText,
@@ -66,6 +78,8 @@ function App() {
     style.setProperty("--cool-bg", bg);
     style.setProperty("--cool-fg", fg);
     style.setProperty("--cool-border", border);
+    style.setProperty("--cool-search-border", searchBorder);
+    style.setProperty("--cool-search-bg", searchBG);
     style.setProperty("--cool-column-bg", columnBG);
     style.setProperty("--cool-active-item", activeItem);
     style.setProperty("--cool-active-item-text", activeItemText);
@@ -78,7 +92,22 @@ function App() {
   });
   return (
     <div className="sans-serif flex flex-column flex-auto min-vh-100">
-      <div className="pa3 tc bb b--cool cool-top-nav">Themes Are Cool</div>
+      <div
+        className="pa2 tc bb b--cool cool-top-nav flex items-center"
+        style={{ cursor: "default", userSelect: "none" }}
+      >
+        <div class="flex-auto" />
+        <div class="ph2">&larr;</div>
+        <div class="ph2 o-50">&rarr;</div>
+        <div class="ph2" />
+        <div class="pa1 br3 cool-search" style={{ width: 400 }}>
+          Themes Are Cool
+        </div>
+        <div class="ph2" />
+        <div class="ph2 o-0">&larr;</div>
+        <div class="ph2 o-0">&rarr;</div>
+        <div class="flex-auto" />
+      </div>
       <div className="flex flex-auto">
         <Sidebar theme={theme} />
         <Configurator
