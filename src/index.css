@@ -107,10 +107,6 @@ body {
   height: 24px;
 }
 
-.cool-palette-item:active {
-  transform: scale(0.9);
-}
-
 .chrome-picker {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) !important;
 }
