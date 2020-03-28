@@ -2,11 +2,8 @@ import React from "react";
 
 function Footer(/* props */) {
   return (
-    <footer className="mh3 mb3 o-80 f5">
-      <p>
-        This product is not endorsed by, affiliated with, or supported by Slack
-        Technologies, Inc.
-      </p>
+    <footer className="pa3 tc o-80 f5">
+      <p></p>
       <p>
         Copyright &copy; {new Date().getFullYear() + " "}
         <a className="color-inherit b" href="https://mockbrian.com">

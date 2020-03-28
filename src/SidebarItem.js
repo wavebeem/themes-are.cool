@@ -26,19 +26,13 @@ function SidebarItem({ index, name, type }) {
   }
   function renderChannel(channel) {
     const className = C("pv1 ph3", "flex", "cool-sidebar-item");
-    // const { activeColor, hoverColor, activeTextColor, badgeColor } = theme;
     const style = {
-      // background: index === 3 ? activeColor : isHovered ? hoverColor : null,
-      // color: index === 3 ? activeTextColor : null,
       opacity: index === 3 || index % 4 === 0 || index % 6 === 0 ? null : "0.7",
       width: WIDTH
     };
     const badge = (
       <div
-        style={{
-          minWidth: "25px"
-          // background: badgeColor
-        }}
+        style={{ minWidth: "25px" }}
         className="normal tc br-pill white mr1 f6 cool-badge"
       >
         3
