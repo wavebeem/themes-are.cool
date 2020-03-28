@@ -8,6 +8,62 @@ body {
   overflow-x: auto;
 }
 
+:root {
+  --cool-bg: #eeeeee;
+  --cool-fg: #000000;
+  --cool-border: rgba(0, 0, 0, 0.1);
+  --cool-column-bg: #eeeeee;
+  --cool-active-item: #444444;
+  --cool-active-item-text: #444444;
+  --cool-hover-item: #cccccc;
+  --cool-text-color: #222222;
+  --cool-active-presence: #002200;
+  --cool-mention-badge: #cccccc;
+  --cool-top-nav-bg: #cccccc;
+  --cool-top-nav-text: #cccccc;
+
+  background: var(--cool-bg);
+  color: var(--cool-fg);
+}
+
+.cool-sidebar {
+  background: var(--cool-bg);
+  color: var(--cool-fg);
+}
+
+.cool-sidebar-item:hover {
+  background: var(--cool-hover-item);
+}
+
+.cool-sidebar-item[data-active] {
+  background: var(--cool-active-item);
+  color: var(--cool-active-item-text);
+}
+
+.cool-top-nav {
+  background: var(--cool-top-nav-bg);
+  color: var(--cool-top-nav-text);
+}
+
+.cool-badge {
+  background: var(--cool-mention-badge);
+  color: white;
+}
+
+.cool-textarea {
+  background: var(--cool-bg);
+  color: var(--cool-fg);
+  border-color: currentColor;
+}
+
+.b--cool {
+  border-color: var(--cool-border);
+}
+
+.bg-cool {
+  background: var(--cool-bg);
+}
+
 .inner-focus:focus {
   outline: 0;
   box-shadow: inset 0 0 0 3px white, inset 0 0 0 6px black;

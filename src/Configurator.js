@@ -8,13 +8,11 @@ import Palette from "./Palette";
 
 function Configurator({
   theme,
-  updateBadgeType,
+  themeType,
+  primaryColor,
   updatePrimaryColor,
   updateThemeType
 }) {
-  function onChangeBadgeType(event) {
-    updateBadgeType(event.target.value);
-  }
   function onChangeThemeType(event) {
     updateThemeType(event.target.value);
   }
@@ -22,32 +20,35 @@ function Configurator({
     updatePrimaryColor(hex);
   }
   const {
-    primaryColor,
-    foregroundColor,
-    badgeType,
-    themeType,
-    hoverColor,
-    activeColor,
-    activeTextColor,
-    badgeColor
+    columnBG,
+    activeItem,
+    activeItemText,
+    hoverItem,
+    textColor,
+    activePresence,
+    mentionBadge,
+    topNavBG,
+    topNavText
   } = theme;
   const slackTheme = [
-    primaryColor, // Column BG
-    hoverColor, // Menu BG Hover
-    activeColor, // Active Item
-    activeTextColor, // Active Item Text
-    hoverColor, // Hover Item
-    foregroundColor, // Text Color
-    foregroundColor, // Active Presence
-    badgeColor // Mention Badge
+    columnBG,
+    "#ff00ff",
+    activeItem,
+    activeItemText,
+    hoverItem,
+    textColor,
+    activePresence,
+    mentionBadge,
+    topNavBG,
+    topNavText
   ].join(",");
   const selectAll = event => {
     event.target.focus();
     event.target.select();
   };
-  const radioClass = "ph2 pv0 br2 db lh-copy hover-bg-light-gray";
+  const radioClass = "ph2 pv0 br2 db lh-copy";
   const elemHeader = (
-    <header className="bb b--light-gray pv2 ph3 mb3">
+    <header className="bb b--cool pv2 ph3 mb3">
       <h1 className="db mt0 mb1 f5">#themes-are-cool</h1>
       <h2 className="db gray ma0 f6 normal">
         Color code your workspaces!{" "}
@@ -83,9 +84,7 @@ function Configurator({
         spellCheck={false}
         className={`
           border-box w-100
-          bg-white
-          glow
-          b--black-20
+          cool-textarea
           bw1
           ba br2
           pa2
@@ -96,7 +95,7 @@ function Configurator({
   );
   const elemRadioButtonsText = (
     <div className="db ph3 mb3">
-      <h2 className="b ttu f6 mv1">Text color</h2>
+      <h2 className="b ttu f6 mv1">Theme type</h2>
       <label className={radioClass}>
         <input
           type="radio"
@@ -105,7 +104,7 @@ function Configurator({
           checked={themeType === "dark"}
           onChange={onChangeThemeType}
         />
-        <span className="ml2">Light text</span>
+        <span className="ml2">Dark theme</span>
       </label>
       <label className={radioClass}>
         <input
@@ -115,32 +114,7 @@ function Configurator({
           checked={themeType === "light"}
           onChange={onChangeThemeType}
         />
-        <span className="ml2">Dark text</span>
-      </label>
-    </div>
-  );
-  const elemRadioButtonsBadge = (
-    <div className="db ph3 mb3">
-      <h2 className="db b ttu f6 mv1">Badge color</h2>
-      <label className={radioClass}>
-        <input
-          type="radio"
-          name="badge-type"
-          value="red"
-          checked={badgeType === "red"}
-          onChange={onChangeBadgeType}
-        />
-        <span className="ml2">Red badges</span>
-      </label>
-      <label className={radioClass}>
-        <input
-          type="radio"
-          name="badge-type"
-          value="themed"
-          checked={badgeType === "themed"}
-          onChange={onChangeBadgeType}
-        />
-        <span className="ml2">Dark badges</span>
+        <span className="ml2">Light theme</span>
       </label>
     </div>
   );
@@ -148,16 +122,13 @@ function Configurator({
     <Palette themeType={themeType} updatePrimaryColor={updatePrimaryColor} />
   );
   return (
-    <div className="flex-auto mw8">
+    <div className="flex-auto">
       {elemHeader}
       <div className="flex">
         <div>{elemPalette}</div>
         <div className="flex-auto">
           {elemPrimaryColor}
-          <div className="flex-l">
-            {elemRadioButtonsText}
-            {elemRadioButtonsBadge}
-          </div>
+          <div className="flex-l">{elemRadioButtonsText}</div>
           {elemTheme}
           <Footer />
         </div>

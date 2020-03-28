@@ -44,7 +44,7 @@ function Palette({ updatePrimaryColor, themeType }) {
                 updatePrimaryColor(c);
               }}
               style={{
-                height: "30px",
+                height: "24px",
                 background: c
               }}
               className={C(
