@@ -1,18 +1,16 @@
 import React from "react";
+import PT from "prop-types";
 
 import SidebarItem from "./SidebarItem";
-import ThemeType from "./prop-types/theme";
 
 const CHANNELS = [
   "general",
   "video-games",
   "running",
   "archery",
-  "build",
   "qa",
   "frontend",
   "backend",
-  "random",
   "announcements"
 ];
 
@@ -21,12 +19,10 @@ const NAMES = [
   "Xel Madine",
   "Auros Green",
   "Makon Covell",
-  "Robert Driet",
   "Saubio Tobian",
   "Candurous Marr",
   "Surro Starr",
-  "Rayf Mantisa",
-  "Gallegher Lerann"
+  "Rayf Mantisa"
 ];
 
 function Sidebar({ theme }) {
@@ -47,7 +43,7 @@ function Sidebar({ theme }) {
 Sidebar.displayName = "Sidebar";
 
 Sidebar.propTypes = {
-  theme: ThemeType.isRequired
+  theme: PT.object.isRequired
 };
 
 export default Sidebar;

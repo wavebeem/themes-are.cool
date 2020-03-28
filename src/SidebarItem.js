@@ -2,8 +2,6 @@ import React from "react";
 import PT from "prop-types";
 import C from "classnames";
 
-import ThemeType from "./prop-types/theme";
-
 const OFFLINE = "\u25CB";
 const ONLINE = "\u25CF";
 const WIDTH = "220px";
@@ -12,13 +10,7 @@ function SidebarItem({ index, name, type }) {
   function renderPerson(person) {
     const isOnline = index % 5 <= 2;
     const icon = isOnline ? ONLINE : OFFLINE;
-    const className = C(
-      "pointer",
-      "br2 br--right",
-      "pv1 ph3",
-      "o-70",
-      "cool-sidebar-item"
-    );
+    const className = C("pv1 ph3", "o-70", "cool-sidebar-item");
     const style = {
       width: WIDTH
     };
@@ -33,7 +25,7 @@ function SidebarItem({ index, name, type }) {
     );
   }
   function renderChannel(channel) {
-    const className = C("pointer", "pv1 ph3", "flex", "cool-sidebar-item");
+    const className = C("pv1 ph3", "flex", "cool-sidebar-item");
     // const { activeColor, hoverColor, activeTextColor, badgeColor } = theme;
     const style = {
       // background: index === 3 ? activeColor : isHovered ? hoverColor : null,
@@ -84,7 +76,7 @@ SidebarItem.propTypes = {
   index: PT.number.isRequired,
   name: PT.string.isRequired,
   type: PT.oneOf(["person", "channel"]).isRequired,
-  theme: ThemeType.isRequired
+  theme: PT.object.isRequired
 };
 
 export default SidebarItem;

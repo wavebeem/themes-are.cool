@@ -2,7 +2,6 @@ import React from "react";
 import PT from "prop-types";
 import { ChromePicker } from "react-color";
 
-import ThemeType from "./prop-types/theme";
 import Footer from "./Footer";
 import Palette from "./Palette";
 
@@ -32,7 +31,12 @@ function Configurator({
   } = theme;
   const slackTheme = [
     columnBG,
-    "#ff00ff",
+    // TODO: What does this color mean? The second color appears to be equal to
+    // the hoverItem color in all the integrated themes, but if I change it to
+    // something obvious like #ff00ff I can't see it appear anywhere in the UI.
+    //
+    // https://twitter.com/wavebeem/status/1243741888944857088
+    hoverItem,
     activeItem,
     activeItemText,
     hoverItem,
@@ -72,10 +76,7 @@ function Configurator({
   );
   const elemTheme = (
     <label className="db ph3">
-      <h2 className="b ttu f6 mt0 mb1">
-        Send this to any chat room, then click the <q>Switch sidebar theme</q>{" "}
-        button
-      </h2>
+      <h2 className="b f4 mt0 mb1">Send this as a message to switch themes</h2>
       <textarea
         onFocus={selectAll}
         onChange={() => {}}
@@ -95,7 +96,7 @@ function Configurator({
   );
   const elemRadioButtonsText = (
     <div className="db ph3 mb3">
-      <h2 className="b ttu f6 mv1">Theme type</h2>
+      <h2 className="b f6 mv1">Theme type</h2>
       <label className={radioClass}>
         <input
           type="radio"
@@ -129,6 +130,11 @@ function Configurator({
         <div className="flex-auto">
           {elemPrimaryColor}
           <div className="flex-l">{elemRadioButtonsText}</div>
+          <p class="ph3 mv2">
+            Note that you will stil need to choose a dark or light background
+            separately from applying this theme
+          </p>
+
           {elemTheme}
           <Footer />
         </div>
@@ -140,7 +146,7 @@ function Configurator({
 Configurator.displayName = "Configurator";
 
 Configurator.propTypes = {
-  theme: ThemeType.isRequired,
+  theme: PT.object.isRequired,
   updateBadgeType: PT.func.isRequired,
   updatePrimaryColor: PT.func.isRequired,
   updateThemeType: PT.func.isRequired

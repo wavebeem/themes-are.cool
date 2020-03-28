@@ -24,11 +24,14 @@ body {
 
   background: var(--cool-bg);
   color: var(--cool-fg);
+  scrollbar-color: var(--cool-fg) var(--cool-bg);
 }
 
 .cool-sidebar {
   background: var(--cool-bg);
   color: var(--cool-fg);
+  cursor: default;
+  user-select: none;
 }
 
 .cool-sidebar-item:hover {

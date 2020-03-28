@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TinyColor from "tinycolor2";
 
 import Configurator from "./Configurator";
@@ -22,17 +22,32 @@ function colorLightDark(color, light, dark) {
   return contrast >= 3 ? light : dark;
 }
 
+const darkMode = matchMedia("(prefers-color-scheme: dark)");
+
 function App() {
-  const [primaryColor, setPrimaryColor] = useState("#3f0e40");
-  const [themeType, setThemeType] = useState("light");
+  const [primaryColor, setPrimaryColor] = useState("#1565c0");
+  // TODO: Detect user theme preference for initial value
+  const [themeType, setThemeType] = useState(
+    darkMode.matches ? "dark" : "light"
+  );
+  useEffect(() => {
+    const fn = event => {
+      setThemeType(event.matches ? "dark" : "light");
+      console.log(event);
+    };
+    darkMode.addEventListener("change", fn);
+    return () => {
+      darkMode.removeEventListener("change", fn);
+    };
+  }, []);
   const bg = themeType === "dark" ? "#1a1d21" : "#ffffff";
-  const fg = themeType === "dark" ? "#ffffff" : "#000000";
+  const fg = themeType === "dark" ? "#d1d2d3" : "#1d1c1d";
   const border =
     themeType === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)";
   const columnBG = bg;
   const activeItem = primaryColor;
   const activeItemText = colorLightDark(primaryColor, "#ffffff", "#000000");
-  const hoverItem = lighten(columnBG, -10);
+  const hoverItem = lighten(columnBG, themeType === "dark" ? 6 : -8);
   const textColor = fg;
   const activePresence = textColor;
   const mentionBadge = "#cd2553";
@@ -53,32 +68,23 @@ function App() {
     topNavBG,
     topNavText
   };
-  const style = document.documentElement.style;
-  style.setProperty("--cool-bg", bg);
-  style.setProperty("--cool-fg", fg);
-  style.setProperty("--cool-border", border);
-  style.setProperty("--cool-column-bg", columnBG);
-  style.setProperty("--cool-active-item", activeItem);
-  style.setProperty("--cool-active-item-text", activeItemText);
-  style.setProperty("--cool-hover-item", hoverItem);
-  style.setProperty("--cool-text-color", textColor);
-  style.setProperty("--cool-active-presence", activePresence);
-  style.setProperty("--cool-mention-badge", mentionBadge);
-  style.setProperty("--cool-top-nav-bg", topNavBG);
-  style.setProperty("--cool-top-nav-text", topNavText);
+  useEffect(() => {
+    const style = document.documentElement.style;
+    style.setProperty("--cool-bg", bg);
+    style.setProperty("--cool-fg", fg);
+    style.setProperty("--cool-border", border);
+    style.setProperty("--cool-column-bg", columnBG);
+    style.setProperty("--cool-active-item", activeItem);
+    style.setProperty("--cool-active-item-text", activeItemText);
+    style.setProperty("--cool-hover-item", hoverItem);
+    style.setProperty("--cool-text-color", textColor);
+    style.setProperty("--cool-active-presence", activePresence);
+    style.setProperty("--cool-mention-badge", mentionBadge);
+    style.setProperty("--cool-top-nav-bg", topNavBG);
+    style.setProperty("--cool-top-nav-text", topNavText);
+  });
   return (
-    <div
-      className="sans-serif flex flex-column flex-auto min-vh-100"
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        height: "100vh",
-        width: "100vw"
-      }}
-    >
+    <div className="sans-serif flex flex-column flex-auto min-vh-100">
       <SearchBar theme={theme} />
       <div className="flex flex-auto">
         <Sidebar theme={theme} />
