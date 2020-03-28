@@ -50,7 +50,7 @@ function Configurator({
     event.target.focus();
     event.target.select();
   };
-  const radioClass = "ph2 pv0 br2 db lh-copy";
+  const radioClass = "ph2 pv1 br2 db lh-copy";
   const elemHeader = (
     <header className="bb b--cool pv2 ph3 mb3">
       <h1 className="db mt0 mb1 f5">#themes-are-cool</h1>
@@ -81,7 +81,7 @@ function Configurator({
         onFocus={selectAll}
         onChange={() => {}}
         value={slackTheme}
-        rows={2}
+        rows={4}
         spellCheck={false}
         className={`
           border-box w-100
@@ -105,7 +105,9 @@ function Configurator({
           checked={themeType === "dark"}
           onChange={onChangeThemeType}
         />
-        <span className="ml2">Dark theme</span>
+        <span className="ml2 br2 ph1 dib ba b--white-30 bg-near-black light-gray">
+          Dark theme
+        </span>
       </label>
       <label className={radioClass}>
         <input
@@ -115,7 +117,9 @@ function Configurator({
           checked={themeType === "light"}
           onChange={onChangeThemeType}
         />
-        <span className="ml2">Light theme</span>
+        <span className="ml2 br2 ph1 dib ba b--black-10 bg-near-white dark-gray">
+          Light theme
+        </span>
       </label>
     </div>
   );
@@ -130,11 +134,12 @@ function Configurator({
         <div className="flex-auto">
           {elemPrimaryColor}
           <div className="flex-l">{elemRadioButtonsText}</div>
-          <p class="ph3 mv2">
-            Note that you will stil need to choose a dark or light background
+          <p className="ph3 mv2">
+            Note that you will still need to choose a dark or light background
             separately from applying this theme
           </p>
-
+        </div>
+        <div class="flex flex-column">
           {elemTheme}
           <Footer />
         </div>

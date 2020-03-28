@@ -5,12 +5,6 @@ import Configurator from "./Configurator";
 import Sidebar from "./Sidebar";
 import { SearchBar } from "./SearchBar";
 
-function darken(color, amount) {
-  return TinyColor(color)
-    .darken(amount)
-    .toHexString();
-}
-
 function lighten(color, amount) {
   const color2 = TinyColor(color).lighten(amount);
   return TinyColor.mix(color2, "white", amount).toHexString();
@@ -33,7 +27,6 @@ function App() {
   useEffect(() => {
     const fn = event => {
       setThemeType(event.matches ? "dark" : "light");
-      console.log(event);
     };
     darkMode.addEventListener("change", fn);
     return () => {

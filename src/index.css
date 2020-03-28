@@ -57,6 +57,12 @@ body {
   background: var(--cool-bg);
   color: var(--cool-fg);
   border-color: currentColor;
+  resize: none;
+}
+
+.cool-textarea::selection {
+  background: var(--cool-active-item);
+  color: var(--cool-active-item-text);
 }
 
 .b--cool {
