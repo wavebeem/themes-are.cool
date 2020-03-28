@@ -63,8 +63,8 @@ function Configurator({
     </header>
   );
   const elemPrimaryColor = (
-    <label className="db ph3">
-      <h2 className="b ttu f6 mt0 mb1">Color</h2>
+    <div className="ph3">
+      <h2 className="b f6 mt0 mb1">Color</h2>
       <div className="mb3">
         <ChromePicker
           color={primaryColor}
@@ -72,7 +72,7 @@ function Configurator({
           onChange={onColorPickerChange}
         />
       </div>
-    </label>
+    </div>
   );
   const elemTheme = (
     <label className="db ph3">
