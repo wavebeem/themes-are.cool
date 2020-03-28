@@ -39,6 +39,12 @@ body {
   user-select: none;
 }
 
+.cool-example {
+  border-radius: 8px;
+  padding: 1px 3px;
+  border: 1px solid var(--cool-border);
+}
+
 .cool-sidebar-item:hover {
   background: var(--cool-hover-item);
 }
@@ -98,7 +104,11 @@ body {
 }
 
 .cool-palette-item {
-  height: 20px;
+  height: 24px;
+}
+
+.cool-palette-item:active {
+  transform: scale(0.9);
 }
 
 .chrome-picker {

@@ -39,8 +39,8 @@ function App() {
       ? withLightness(primaryColor, 15)
       : withLightness(primaryColor, 95);
   const activeItem = primaryColor;
-  const activeItemText = colorLightDark(primaryColor, "#ffffff", "#000000");
-  const hoverItem = lighten(columnBG, themeType === "dark" ? 6 : -8);
+  const activeItemText = colorLightDark(activeItem, "#ffffff", "#000000");
+  const hoverItem = lighten(columnBG, themeType === "dark" ? 5 : -5);
   const textColor = fg;
   const activePresence = textColor;
   const mentionBadge = "#cd2553";

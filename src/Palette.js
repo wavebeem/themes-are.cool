@@ -45,7 +45,6 @@ function Palette({ updatePrimaryColor, themeType }) {
               "bn br0",
               "code ttl",
               "w-100 h1 border-box",
-              "pointer",
               "inner-focus",
               "cool-palette-item"
             )}

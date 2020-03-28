@@ -54,9 +54,11 @@ function Configurator({
     <div className="flex-auto min-h-100">
       <header className="ph3 bb b--cool pv2">
         <h1 className="db mt0 mb1 f5">#legal-notice</h1>
-        <h2 className="db gray ma0 f5 normal">
-          This product is not endorsed by, affiliated with, or supported by
-          Slack Technologies, Inc.{" "}
+        <h2 className="db ma0 f5 normal">
+          <span class="o-80">
+            This product is not endorsed by, affiliated with, or supported by
+            Slack Technologies, Inc.
+          </span>{" "}
           <span role="img" aria-label="judge emoji">
             👨‍⚖️
           </span>
@@ -74,7 +76,7 @@ function Configurator({
             onChange={onColorPickerChange}
           />
           <div className="db pv3">
-            <h2 className="b f5 mv1">Theme type</h2>
+            <h2 className="b f5 mv1">Appearance</h2>
             <label className={radioClass}>
               <input
                 type="radio"
@@ -84,7 +86,7 @@ function Configurator({
                 onChange={onChangeThemeType}
               />
               <span className="ml2 br2 ph1 dib ba b--black-10 bg-near-white dark-gray">
-                Light theme
+                Light
               </span>
             </label>
             <label className={radioClass}>
@@ -96,31 +98,33 @@ function Configurator({
                 onChange={onChangeThemeType}
               />
               <span className="ml2 br2 ph1 dib ba b--white-30 bg-near-black light-gray">
-                Dark theme
+                Dark
               </span>
             </label>
           </div>
         </div>
         <div className="flex flex-column">
           <label className="db">
-            <h2 className="b f4 mt0 mb1">
-              Send this as a message to switch themes
-            </h2>
+            <h2 className="b f5 mt0 mb1">Theme</h2>
             <textarea
+              readOnly
               onFocus={selectAll}
-              onChange={() => {}}
               value={slackTheme}
-              rows={3}
+              rows={4}
               spellCheck={false}
               className="border-box w-100 cool-textarea bw1 ba br2 pa2 code"
             />
           </label>
           <div className="flex-auto">
-            <p>
-              Note that you will still need to choose a dark or light background
-              separately from applying this theme
-            </p>
-            <footer className="o-80 f5">
+            <ul class="lh-copy pl3">
+              <li>Copy the theme above.</li>
+              <li>Send it as a message.</li>
+              <li>
+                Click <q>Switch sidebar theme</q>.
+              </li>
+            </ul>
+            <p>Tip: Direct message yourself to store your favorite themes.</p>
+            <footer>
               &copy; {new Date().getFullYear() + " "}
               <a className="color-inherit b" href="https://mockbrian.com">
                 Brian Mock
