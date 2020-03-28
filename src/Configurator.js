@@ -2,7 +2,6 @@ import React from "react";
 import PT from "prop-types";
 import { ChromePicker } from "react-color";
 
-import Footer from "./Footer";
 import Palette from "./Palette";
 
 function Configurator({
@@ -54,7 +53,7 @@ function Configurator({
   return (
     <div className="flex-auto min-h-100">
       <header className="ph3 bb b--cool pv2">
-        <h1 className="db mt0 mb1 f5">#themes-are-cool</h1>
+        <h1 className="db mt0 mb1 f5">#legal-notice</h1>
         <h2 className="db gray ma0 f5 normal">
           This product is not endorsed by, affiliated with, or supported by
           Slack Technologies, Inc.{" "}
@@ -121,7 +120,15 @@ function Configurator({
               Note that you will still need to choose a dark or light background
               separately from applying this theme
             </p>
-            <Footer />
+            <footer className="o-80 f5">
+              &copy; {new Date().getFullYear() + " "}
+              <a className="color-inherit b" href="https://mockbrian.com">
+                Brian Mock
+              </a>{" "}
+              <span role="img" aria-label="nerd face emoji">
+                🤓
+              </span>
+            </footer>
           </div>
         </div>
       </div>
