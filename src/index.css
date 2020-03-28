@@ -80,9 +80,9 @@ body {
 
 .cool-grid {
   display: grid;
-  grid-template-columns: 150px 1fr;
-  grid-gap: 1rem;
-  padding: 1rem;
+  grid-template-columns: 150px 225px 1fr;
+  grid-gap: 2rem;
+  padding: 2rem;
 }
 
 .cool-palette {

@@ -52,7 +52,7 @@ function Configurator({
   };
   const radioClass = "ph2 pv1 br2 db lh-copy";
   return (
-    <div className="flex-auto">
+    <div className="flex-auto min-h-100">
       <header className="ph3 bb b--cool pv2">
         <h1 className="db mt0 mb1 f5">#themes-are-cool</h1>
         <h2 className="db gray ma0 f5 normal">
@@ -63,12 +63,45 @@ function Configurator({
           </span>
         </h2>
       </header>
-
-      <div className="cool-grid">
+      <div className="cool-grid flex-auto">
         <Palette
           themeType={themeType}
           updatePrimaryColor={updatePrimaryColor}
         />
+        <div>
+          <ChromePicker
+            color={primaryColor}
+            disableAlpha={true}
+            onChange={onColorPickerChange}
+          />
+          <div className="db pv3">
+            <h2 className="b f5 mv1">Theme type</h2>
+            <label className={radioClass}>
+              <input
+                type="radio"
+                name="theme-type"
+                value="light"
+                checked={themeType === "light"}
+                onChange={onChangeThemeType}
+              />
+              <span className="ml2 br2 ph1 dib ba b--black-10 bg-near-white dark-gray">
+                Light theme
+              </span>
+            </label>
+            <label className={radioClass}>
+              <input
+                type="radio"
+                name="theme-type"
+                value="dark"
+                checked={themeType === "dark"}
+                onChange={onChangeThemeType}
+              />
+              <span className="ml2 br2 ph1 dib ba b--white-30 bg-near-black light-gray">
+                Dark theme
+              </span>
+            </label>
+          </div>
+        </div>
         <div class="flex flex-column">
           <label className="db">
             <h2 className="b f4 mt0 mb1">
@@ -78,52 +111,20 @@ function Configurator({
               onFocus={selectAll}
               onChange={() => {}}
               value={slackTheme}
-              rows={2}
+              rows={3}
               spellCheck={false}
               className="border-box w-100 cool-textarea bw1 ba br2 pa2 code"
             />
           </label>
           <div className="flex-auto">
-            <div className="db pv3">
-              <h2 className="b f5 mv1">Theme type</h2>
-              <label className={radioClass}>
-                <input
-                  type="radio"
-                  name="theme-type"
-                  value="dark"
-                  checked={themeType === "dark"}
-                  onChange={onChangeThemeType}
-                />
-                <span className="ml2 br2 ph1 dib ba b--white-30 bg-near-black light-gray">
-                  Dark theme
-                </span>
-              </label>
-              <label className={radioClass}>
-                <input
-                  type="radio"
-                  name="theme-type"
-                  value="light"
-                  checked={themeType === "light"}
-                  onChange={onChangeThemeType}
-                />
-                <span className="ml2 br2 ph1 dib ba b--black-10 bg-near-white dark-gray">
-                  Light theme
-                </span>
-              </label>
-            </div>
-            <p className="ph3 mv2">
+            <p>
               Note that you will still need to choose a dark or light background
               separately from applying this theme
             </p>
+            <Footer />
           </div>
-          <ChromePicker
-            color={primaryColor}
-            disableAlpha={true}
-            onChange={onColorPickerChange}
-          />
         </div>
       </div>
-      <Footer />
     </div>
   );
 }
