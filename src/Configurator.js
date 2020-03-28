@@ -101,7 +101,7 @@ function Configurator({
             </label>
           </div>
         </div>
-        <div class="flex flex-column">
+        <div className="flex flex-column">
           <label className="db">
             <h2 className="b f4 mt0 mb1">
               Send this as a message to switch themes
@@ -140,7 +140,6 @@ Configurator.displayName = "Configurator";
 
 Configurator.propTypes = {
   theme: PT.object.isRequired,
-  updateBadgeType: PT.func.isRequired,
   updatePrimaryColor: PT.func.isRequired,
   updateThemeType: PT.func.isRequired
 };

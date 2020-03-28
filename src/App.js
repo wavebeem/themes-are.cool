@@ -1,43 +1,43 @@
 import React, { useState, useEffect } from "react";
-import TinyColor from "tinycolor2";
+import tinycolor from "tinycolor2";
 
 import Configurator from "./Configurator";
 import Sidebar from "./Sidebar";
-import { SearchBar } from "./SearchBar";
+import { useDarkMode } from "./useDarkMode";
 
 function lighten(color, amount) {
-  const color2 = TinyColor(color).lighten(amount);
-  return TinyColor.mix(color2, "white", amount).toHexString();
+  const color2 = tinycolor(color).lighten(amount);
+  return tinycolor.mix(color2, "white", amount).toHexString();
+}
+
+Object.assign(window, { tinycolor });
+
+function withLightness(color, l) {
+  const { h, s } = tinycolor(color).toHsl();
+  return tinycolor({ h, s, l }).toHexString();
 }
 
 function colorLightDark(color, light, dark) {
   // 1 means both colors are identical. 21 means maximum contrast.
-  const contrast = TinyColor.readability(color, light);
+  const contrast = tinycolor.readability(color, light);
   return contrast >= 3 ? light : dark;
 }
 
-const darkMode = matchMedia("(prefers-color-scheme: dark)");
-
 function App() {
   const [primaryColor, setPrimaryColor] = useState("#1565c0");
-  // TODO: Detect user theme preference for initial value
-  const [themeType, setThemeType] = useState(
-    darkMode.matches ? "dark" : "light"
-  );
+  const isDarkMode = useDarkMode();
   useEffect(() => {
-    const fn = event => {
-      setThemeType(event.matches ? "dark" : "light");
-    };
-    darkMode.addEventListener("change", fn);
-    return () => {
-      darkMode.removeEventListener("change", fn);
-    };
-  }, []);
+    setThemeType(isDarkMode ? "dark" : "light");
+  }, [isDarkMode]);
+  const [themeType, setThemeType] = useState(isDarkMode ? "dark" : "light");
   const bg = themeType === "dark" ? "#1a1d21" : "#ffffff";
   const fg = themeType === "dark" ? "#d1d2d3" : "#1d1c1d";
   const border =
     themeType === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)";
-  const columnBG = bg;
+  const columnBG =
+    themeType === "dark"
+      ? withLightness(primaryColor, 15)
+      : withLightness(primaryColor, 95);
   const activeItem = primaryColor;
   const activeItemText = colorLightDark(primaryColor, "#ffffff", "#000000");
   const hoverItem = lighten(columnBG, themeType === "dark" ? 6 : -8);
@@ -78,7 +78,7 @@ function App() {
   });
   return (
     <div className="sans-serif flex flex-column flex-auto min-vh-100">
-      <SearchBar theme={theme} />
+      <div className="pa3 tc bb b--cool cool-top-nav">Themes Are Cool</div>
       <div className="flex flex-auto">
         <Sidebar theme={theme} />
         <Configurator

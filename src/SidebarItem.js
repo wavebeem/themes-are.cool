@@ -15,11 +15,7 @@ function SidebarItem({ index, name, type }) {
       width: WIDTH
     };
     return (
-      <div
-        style={style}
-        className={className}
-        data-active={index === 3 ? "yes" : undefined}
-      >
+      <div style={style} className={className}>
         {icon} {person}
       </div>
     );
