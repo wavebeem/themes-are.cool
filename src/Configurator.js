@@ -30,12 +30,14 @@ function Configurator({
   } = theme;
   const slackTheme = [
     columnBG,
-    // TODO: What does this color mean? The second color appears to be equal to
-    // the hoverItem color in all the integrated themes, but if I change it to
-    // something obvious like #ff00ff I can't see it appear anywhere in the UI.
+    // Per a support request with Slack, the 2nd item in the theme array is no
+    // longer used. It used to represent the color of the area in the sidebar
+    // that says the name of the workspace you're in. The support person said
+    // for the near future, Slack themes will continue to be 10 colors with only
+    // 9 used, just to avoid breaking themes too much.
     //
     // https://twitter.com/wavebeem/status/1243741888944857088
-    hoverItem,
+    columnBG,
     activeItem,
     activeItemText,
     hoverItem,
