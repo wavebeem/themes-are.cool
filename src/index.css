@@ -8,12 +8,109 @@ body {
   overflow-x: auto;
 }
 
-.inner-focus:focus {
+:root {
+  --cool-bg: #eeeeee;
+  --cool-fg: #000000;
+  --cool-border: rgba(0, 0, 0, 0.1);
+  --cool-column-bg: #eeeeee;
+  --cool-active-item: #444444;
+  --cool-active-item-text: #444444;
+  --cool-hover-item: #cccccc;
+  --cool-text-color: #222222;
+  --cool-active-presence: #002200;
+  --cool-mention-badge: #cccccc;
+  --cool-top-nav-bg: #cccccc;
+  --cool-top-nav-text: #cccccc;
+
+  background: var(--cool-bg);
+  color: var(--cool-fg);
+  scrollbar-color: var(--cool-fg) var(--cool-bg);
+}
+
+.cool-search {
+  border: 1px solid var(--cool-search-border);
+  background: var(--cool-search-bg);
+}
+
+.cool-sidebar {
+  background: var(--cool-column-bg);
+  color: var(--cool-fg);
+  cursor: default;
+  user-select: none;
+}
+
+.cool-example {
+  border-radius: 8px;
+  padding: 1px 3px;
+  border: 1px solid var(--cool-border);
+}
+
+.cool-sidebar-item:hover {
+  background: var(--cool-hover-item);
+}
+
+.cool-sidebar-item[data-active] {
+  background: var(--cool-active-item);
+  color: var(--cool-active-item-text);
+}
+
+.cool-top-nav {
+  background: var(--cool-top-nav-bg);
+  color: var(--cool-top-nav-text);
+}
+
+.cool-badge {
+  background: var(--cool-mention-badge);
+  color: white;
+}
+
+.classic-link {
+  color: var(--cool-mention-badge);
+}
+
+.cool-textarea {
+  background: var(--cool-bg);
+  color: var(--cool-fg);
+  border-color: currentColor;
+  resize: none;
+}
+
+.cool-textarea::selection {
+  background: var(--cool-active-item);
+  color: var(--cool-active-item-text);
+}
+
+.b--cool {
+  border-color: var(--cool-border);
+}
+
+.bg-cool {
+  background: var(--cool-bg);
+}
+
+:focus {
   outline: 0;
-  box-shadow: inset 0 0 0 3px white, inset 0 0 0 6px black;
+  box-shadow: 0 0 0 3px black, 0 0 0 4px white;
+}
+
+.cool-grid {
+  display: grid;
+  grid-template-columns: 150px 225px 1fr;
+  grid-gap: 2rem;
+  padding: 2rem;
+}
+
+.cool-palette {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 1px;
+  align-content: start;
+}
+
+.cool-palette-item {
+  height: 24px;
 }
 
 .chrome-picker {
-  box-shadow: none !important;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) !important;
 }

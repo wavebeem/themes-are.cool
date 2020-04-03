@@ -1,66 +1,123 @@
-import React, { useState } from "react";
-import TinyColor from "tinycolor2";
+import React, { useState, useEffect } from "react";
+import tinycolor from "tinycolor2";
 
 import Configurator from "./Configurator";
 import Sidebar from "./Sidebar";
-
-function darken(color, amount) {
-  return TinyColor(color)
-    .darken(amount)
-    .toHexString();
-}
+import { useDarkMode } from "./useDarkMode";
 
 function lighten(color, amount) {
-  const color2 = TinyColor(color).lighten(amount);
-  return TinyColor.mix(color2, "white", amount).toHexString();
+  const color2 = tinycolor(color).lighten(amount);
+  return tinycolor.mix(color2, "white", amount).toHexString();
 }
 
-function preferredThemeTypeFor(color) {
+Object.assign(window, { tinycolor });
+
+function withLightness(color, l) {
+  const { h, s } = tinycolor(color).toHsl();
+  return tinycolor({ h, s, l }).toHexString();
+}
+
+function colorLightDark(color, light, dark) {
   // 1 means both colors are identical. 21 means maximum contrast.
-  const contrast = TinyColor.readability(color, "white");
-  return contrast < 3 ? "light" : "dark";
+  const contrast = tinycolor.readability(color, light);
+  return contrast >= 3 ? light : dark;
 }
 
 function App() {
-  const [badgeType, setBadgeType] = useState("red");
-  const [primaryColor, setPrimaryColor] = useState("#3f0e40");
-  const [themeType, setThemeType] = useState("dark");
-  const darkerColor = darken(primaryColor, 10);
-  const darkestColor = darken(primaryColor, 50);
-  const lighterColor = lighten(primaryColor, 5);
-  const lightestColor = lighten(primaryColor, 10);
-  const foregroundColor = themeType === "dark" ? "#ffffff" : "#000000";
-  const badgeColor = badgeType === "red" ? "#cd2553" : darkerColor;
-  const hoverColor = themeType === "dark" ? lighterColor : darkerColor;
-  const activeColor = themeType === "dark" ? lightestColor : darkestColor;
-  const activeTextColor = "#ffffff";
-  const updatePrimaryColor = color => {
-    setPrimaryColor(TinyColor(color).toHexString());
-    setThemeType(preferredThemeTypeFor(color));
-  };
-  const theme = {
-    badgeType,
+  const [primaryColor, setPrimaryColor] = useState("#1565c0");
+  const isDarkMode = useDarkMode();
+  useEffect(() => {
+    setThemeType(isDarkMode ? "dark" : "light");
+  }, [isDarkMode]);
+  const [themeType, setThemeType] = useState(isDarkMode ? "dark" : "light");
+  const bg = themeType === "dark" ? "#1a1d21" : "#ffffff";
+  const fg = themeType === "dark" ? "#d1d2d3" : "#1d1c1d";
+  const border =
+    themeType === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)";
+  const columnBG =
+    themeType === "dark"
+      ? withLightness(primaryColor, 15)
+      : withLightness(primaryColor, 95);
+  const activeItem = primaryColor;
+  const activeItemText = colorLightDark(activeItem, "#ffffff", "#000000");
+  const hoverItem = lighten(columnBG, themeType === "dark" ? 5 : -5);
+  const textColor = fg;
+  const activePresence = textColor;
+  const mentionBadge = "#cd2553";
+  const topNavBG = primaryColor;
+  const topNavText = activeItemText;
+  const searchBorder = colorLightDark(
     primaryColor,
+    "rgba(255, 255, 255, 0.2)",
+    "rgba(0, 0, 0, 0.2)"
+  );
+  const searchBG = colorLightDark(
+    primaryColor,
+    "rgba(255, 255, 255, 0.1)",
+    "rgba(0, 0, 0, 0.05)"
+  );
+  const theme = {
     themeType,
-    darkerColor,
-    darkestColor,
-    lighterColor,
-    lightestColor,
-    activeTextColor,
-    activeColor,
-    hoverColor,
-    badgeColor,
-    foregroundColor
+    bg,
+    fg,
+    border,
+    searchBorder,
+    searchBG,
+    columnBG,
+    activeItem,
+    activeItemText,
+    hoverItem,
+    textColor,
+    activePresence,
+    mentionBadge,
+    topNavBG,
+    topNavText
   };
+  useEffect(() => {
+    const style = document.documentElement.style;
+    style.setProperty("--cool-bg", bg);
+    style.setProperty("--cool-fg", fg);
+    style.setProperty("--cool-border", border);
+    style.setProperty("--cool-search-border", searchBorder);
+    style.setProperty("--cool-search-bg", searchBG);
+    style.setProperty("--cool-column-bg", columnBG);
+    style.setProperty("--cool-active-item", activeItem);
+    style.setProperty("--cool-active-item-text", activeItemText);
+    style.setProperty("--cool-hover-item", hoverItem);
+    style.setProperty("--cool-text-color", textColor);
+    style.setProperty("--cool-active-presence", activePresence);
+    style.setProperty("--cool-mention-badge", mentionBadge);
+    style.setProperty("--cool-top-nav-bg", topNavBG);
+    style.setProperty("--cool-top-nav-text", topNavText);
+  });
   return (
-    <div className="sans-serif flex flex-auto min-vh-100">
-      <Sidebar theme={theme} />
-      <Configurator
-        theme={theme}
-        updateBadgeType={setBadgeType}
-        updatePrimaryColor={updatePrimaryColor}
-        updateThemeType={setThemeType}
-      />
+    <div className="sans-serif flex flex-column flex-auto min-vh-100">
+      <div
+        className="pa2 tc bb b--cool cool-top-nav flex items-center"
+        style={{ cursor: "default", userSelect: "none" }}
+      >
+        <div className="flex-auto" />
+        <div className="ph2">&larr;</div>
+        <div className="ph2 o-50">&rarr;</div>
+        <div className="ph2" />
+        <div className="pa1 br3 cool-search" style={{ width: 400 }}>
+          Themes Are Cool
+        </div>
+        <div className="ph2" />
+        <div className="ph2 o-0">&larr;</div>
+        <div className="ph2 o-0">&rarr;</div>
+        <div className="flex-auto" />
+      </div>
+      <div className="flex flex-auto">
+        <Sidebar theme={theme} />
+        <Configurator
+          theme={theme}
+          themeType={themeType}
+          primaryColor={primaryColor}
+          updatePrimaryColor={setPrimaryColor}
+          updateThemeType={setThemeType}
+        />
+      </div>
     </div>
   );
 }

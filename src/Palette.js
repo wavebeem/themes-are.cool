@@ -4,7 +4,7 @@ import MC from "material-colors";
 import C from "classnames";
 
 const weights = ["100", "200", "700", "800"];
-const colors = [
+const groupedColors = [
   "red",
   "pink",
   "purple",
@@ -24,39 +24,30 @@ const colors = [
   "brown",
   "blueGrey",
   "grey"
-]
-  .map(c => weights.map(w => MC[c][w]))
-  .reduce((a, b) => [...a, ...b], []);
+].map(c => weights.map(w => MC[c][w]));
+const colors = groupedColors.reduce((a, b) => [...a, ...b], []);
 
 function Palette({ updatePrimaryColor, themeType }) {
-  const className = "ml3 br1 ba b--black-20";
-  const style = {
-    lineHeight: "0",
-    maxWidth: "300px"
-  };
   return (
-    <div className={className} style={style}>
+    <div className="cool-palette">
       {colors.map((c, i) => {
         return (
-          <div key={i} className="dib w-25">
-            <button
-              onClick={() => {
-                updatePrimaryColor(c);
-              }}
-              style={{
-                height: "30px",
-                background: c
-              }}
-              className={C(
-                themeType === "dark" ? "white" : "black",
-                "bn br0",
-                "code ttl",
-                "w-100 border-box",
-                "pointer",
-                "inner-focus"
-              )}
-            />
-          </div>
+          <button
+            key={i}
+            onClick={() => {
+              updatePrimaryColor(c);
+            }}
+            style={{
+              background: c
+            }}
+            className={C(
+              themeType === "dark" ? "white" : "black",
+              "bn br0",
+              "code ttl",
+              "w-100 h1 border-box",
+              "cool-palette-item"
+            )}
+          />
         );
       })}
     </div>

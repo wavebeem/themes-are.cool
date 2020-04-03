@@ -2,19 +2,15 @@ import React from "react";
 import PT from "prop-types";
 import { ChromePicker } from "react-color";
 
-import ThemeType from "./prop-types/theme";
-import Footer from "./Footer";
 import Palette from "./Palette";
 
 function Configurator({
   theme,
-  updateBadgeType,
+  themeType,
+  primaryColor,
   updatePrimaryColor,
   updateThemeType
 }) {
-  function onChangeBadgeType(event) {
-    updateBadgeType(event.target.value);
-  }
   function onChangeThemeType(event) {
     updateThemeType(event.target.value);
   }
@@ -22,144 +18,132 @@ function Configurator({
     updatePrimaryColor(hex);
   }
   const {
-    primaryColor,
-    foregroundColor,
-    badgeType,
-    themeType,
-    hoverColor,
-    activeColor,
-    activeTextColor,
-    badgeColor
+    columnBG,
+    activeItem,
+    activeItemText,
+    hoverItem,
+    textColor,
+    activePresence,
+    mentionBadge,
+    topNavBG,
+    topNavText
   } = theme;
   const slackTheme = [
-    primaryColor, // Column BG
-    hoverColor, // Menu BG Hover
-    activeColor, // Active Item
-    activeTextColor, // Active Item Text
-    hoverColor, // Hover Item
-    foregroundColor, // Text Color
-    foregroundColor, // Active Presence
-    badgeColor // Mention Badge
+    columnBG,
+    // Per a support request with Slack, the 2nd item in the theme array is no
+    // longer used. It used to represent the color of the area in the sidebar
+    // that says the name of the workspace you're in. The support person said
+    // for the near future, Slack themes will continue to be 10 colors with only
+    // 9 used, just to avoid breaking themes too much.
+    //
+    // https://twitter.com/wavebeem/status/1243741888944857088
+    columnBG,
+    activeItem,
+    activeItemText,
+    hoverItem,
+    textColor,
+    activePresence,
+    mentionBadge,
+    topNavBG,
+    topNavText
   ].join(",");
   const selectAll = event => {
     event.target.focus();
     event.target.select();
   };
-  const radioClass = "ph2 pv0 br2 db lh-copy hover-bg-light-gray";
-  const elemHeader = (
-    <header className="bb b--light-gray pv2 ph3 mb3">
-      <h1 className="db mt0 mb1 f5">#themes-are-cool</h1>
-      <h2 className="db gray ma0 f6 normal">
-        Color code your workspaces!{" "}
-        <span role="img" aria-label="peace out emoji">
-          ✌️
-        </span>
-      </h2>
-    </header>
-  );
-  const elemPrimaryColor = (
-    <label className="db ph3">
-      <h2 className="b ttu f6 mt0 mb1">Color</h2>
-      <div className="mb3">
-        <ChromePicker
-          color={primaryColor}
-          disableAlpha={true}
-          onChange={onColorPickerChange}
-        />
-      </div>
-    </label>
-  );
-  const elemTheme = (
-    <label className="db ph3">
-      <h2 className="b ttu f6 mt0 mb1">
-        Send this to any chat room, then click the <q>Switch sidebar theme</q>{" "}
-        button
-      </h2>
-      <textarea
-        onFocus={selectAll}
-        onChange={() => {}}
-        value={slackTheme}
-        rows={2}
-        spellCheck={false}
-        className={`
-          border-box w-100
-          bg-white
-          glow
-          b--black-20
-          bw1
-          ba br2
-          pa2
-          code
-        `}
-      />
-    </label>
-  );
-  const elemRadioButtonsText = (
-    <div className="db ph3 mb3">
-      <h2 className="b ttu f6 mv1">Text color</h2>
-      <label className={radioClass}>
-        <input
-          type="radio"
-          name="theme-type"
-          value="dark"
-          checked={themeType === "dark"}
-          onChange={onChangeThemeType}
-        />
-        <span className="ml2">Light text</span>
-      </label>
-      <label className={radioClass}>
-        <input
-          type="radio"
-          name="theme-type"
-          value="light"
-          checked={themeType === "light"}
-          onChange={onChangeThemeType}
-        />
-        <span className="ml2">Dark text</span>
-      </label>
-    </div>
-  );
-  const elemRadioButtonsBadge = (
-    <div className="db ph3 mb3">
-      <h2 className="db b ttu f6 mv1">Badge color</h2>
-      <label className={radioClass}>
-        <input
-          type="radio"
-          name="badge-type"
-          value="red"
-          checked={badgeType === "red"}
-          onChange={onChangeBadgeType}
-        />
-        <span className="ml2">Red badges</span>
-      </label>
-      <label className={radioClass}>
-        <input
-          type="radio"
-          name="badge-type"
-          value="themed"
-          checked={badgeType === "themed"}
-          onChange={onChangeBadgeType}
-        />
-        <span className="ml2">Dark badges</span>
-      </label>
-    </div>
-  );
-  const elemPalette = (
-    <Palette themeType={themeType} updatePrimaryColor={updatePrimaryColor} />
-  );
+  const radioClass = "ph2 pv1 br2 db lh-copy";
   return (
-    <div className="flex-auto mw8">
-      {elemHeader}
-      <div className="flex">
-        <div>{elemPalette}</div>
-        <div className="flex-auto">
-          {elemPrimaryColor}
-          <div className="flex-l">
-            {elemRadioButtonsText}
-            {elemRadioButtonsBadge}
+    <div className="flex-auto min-h-100">
+      <header className="ph3 bb b--cool pv2">
+        <h1 className="db mt0 mb1 f5">#legal-notice</h1>
+        <h2 className="db ma0 f5 normal">
+          <span className="o-80">
+            This product is not endorsed by, affiliated with, or supported by
+            Slack Technologies, Inc.
+          </span>{" "}
+          <span role="img" aria-label="judge emoji">
+            👨‍⚖️
+          </span>
+        </h2>
+      </header>
+      <div className="cool-grid flex-auto">
+        <Palette
+          themeType={themeType}
+          updatePrimaryColor={updatePrimaryColor}
+        />
+        <div>
+          <ChromePicker
+            color={primaryColor}
+            disableAlpha={true}
+            onChange={onColorPickerChange}
+          />
+          <div className="db pv3">
+            <h2 className="b f5 mv1">Appearance</h2>
+            <label className={radioClass}>
+              <input
+                type="radio"
+                name="theme-type"
+                value="light"
+                checked={themeType === "light"}
+                onChange={onChangeThemeType}
+              />
+              <span className="ml2 br2 ph1 dib ba b--black-10 bg-near-white dark-gray">
+                Light
+              </span>
+            </label>
+            <label className={radioClass}>
+              <input
+                type="radio"
+                name="theme-type"
+                value="dark"
+                checked={themeType === "dark"}
+                onChange={onChangeThemeType}
+              />
+              <span className="ml2 br2 ph1 dib ba b--white-30 bg-near-black light-gray">
+                Dark
+              </span>
+            </label>
           </div>
-          {elemTheme}
-          <Footer />
+        </div>
+        <div className="flex flex-column">
+          <label className="db">
+            <h2 className="b f5 mt0 mb1">Theme</h2>
+            <textarea
+              readOnly
+              onFocus={selectAll}
+              value={slackTheme}
+              rows={4}
+              spellCheck={false}
+              className="border-box w-100 cool-textarea bw1 ba br2 pa2 code"
+            />
+          </label>
+          <div className="flex-auto">
+            <ul className="lh-copy pl3">
+              <li>Copy the theme above.</li>
+              <li>Send it as a message.</li>
+              <li>
+                Click <q>Switch sidebar theme</q>.
+              </li>
+            </ul>
+            <p>Tip: Direct message yourself to store your favorite themes.</p>
+            <p>
+              <a
+                href="https://classic.themes-are.cool"
+                className="cool-badge f5 pv1 ph2 br2 no-underline"
+              >
+                Switch to classic layout
+              </a>
+            </p>
+            <footer>
+              &copy; {new Date().getFullYear() + " "}
+              <a className="color-inherit b" href="https://wwww.mockbrian.com">
+                Brian Mock
+              </a>{" "}
+              <span role="img" aria-label="nerd face emoji">
+                🤓
+              </span>
+            </footer>
+          </div>
         </div>
       </div>
     </div>
@@ -169,8 +153,7 @@ function Configurator({
 Configurator.displayName = "Configurator";
 
 Configurator.propTypes = {
-  theme: ThemeType.isRequired,
-  updateBadgeType: PT.func.isRequired,
+  theme: PT.object.isRequired,
   updatePrimaryColor: PT.func.isRequired,
   updateThemeType: PT.func.isRequired
 };
