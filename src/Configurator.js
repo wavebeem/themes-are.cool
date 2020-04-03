@@ -136,7 +136,7 @@ function Configurator({
             </p>
             <footer>
               &copy; {new Date().getFullYear() + " "}
-              <a className="color-inherit b" href="https://mockbrian.com">
+              <a className="color-inherit b" href="https://wwww.mockbrian.com">
                 Brian Mock
               </a>{" "}
               <span role="img" aria-label="nerd face emoji">
