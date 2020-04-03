@@ -162,7 +162,7 @@ function Configurator({
           <p>
             <a
               href="https://www.themes-are.cool"
-              className="ph3 b dark-red hover-red"
+              className="mh3 pv1 ph2 no-underline br2 bg-dark-red white"
             >
               Switch to modern layout
             </a>
