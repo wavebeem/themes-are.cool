@@ -159,6 +159,14 @@ function Configurator({
             {elemRadioButtonsBadge}
           </div>
           {elemTheme}
+          <p>
+            <a
+              href="https://www.themes-are.cool"
+              className="ph3 b dark-red hover-red"
+            >
+              Switch to modern layout
+            </a>
+          </p>
           <Footer />
         </div>
       </div>
