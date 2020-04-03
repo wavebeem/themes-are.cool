@@ -57,7 +57,7 @@ function Configurator({
       <header className="ph3 bb b--cool pv2">
         <h1 className="db mt0 mb1 f5">#legal-notice</h1>
         <h2 className="db ma0 f5 normal">
-          <span class="o-80">
+          <span className="o-80">
             This product is not endorsed by, affiliated with, or supported by
             Slack Technologies, Inc.
           </span>{" "}
@@ -118,7 +118,7 @@ function Configurator({
             />
           </label>
           <div className="flex-auto">
-            <ul class="lh-copy pl3">
+            <ul className="lh-copy pl3">
               <li>Copy the theme above.</li>
               <li>Send it as a message.</li>
               <li>
@@ -126,6 +126,14 @@ function Configurator({
               </li>
             </ul>
             <p>Tip: Direct message yourself to store your favorite themes.</p>
+            <p>
+              <a
+                href="https://classic.themes-are.cool"
+                className="cool-badge f5 pv1 ph2 br2 no-underline"
+              >
+                Switch to classic layout
+              </a>
+            </p>
             <footer>
               &copy; {new Date().getFullYear() + " "}
               <a className="color-inherit b" href="https://mockbrian.com">

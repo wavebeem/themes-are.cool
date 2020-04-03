@@ -64,6 +64,10 @@ body {
   color: white;
 }
 
+.classic-link {
+  color: var(--cool-mention-badge);
+}
+
 .cool-textarea {
   background: var(--cool-bg);
   color: var(--cool-fg);

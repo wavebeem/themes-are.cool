@@ -96,17 +96,17 @@ function App() {
         className="pa2 tc bb b--cool cool-top-nav flex items-center"
         style={{ cursor: "default", userSelect: "none" }}
       >
-        <div class="flex-auto" />
-        <div class="ph2">&larr;</div>
-        <div class="ph2 o-50">&rarr;</div>
-        <div class="ph2" />
-        <div class="pa1 br3 cool-search" style={{ width: 400 }}>
+        <div className="flex-auto" />
+        <div className="ph2">&larr;</div>
+        <div className="ph2 o-50">&rarr;</div>
+        <div className="ph2" />
+        <div className="pa1 br3 cool-search" style={{ width: 400 }}>
           Themes Are Cool
         </div>
-        <div class="ph2" />
-        <div class="ph2 o-0">&larr;</div>
-        <div class="ph2 o-0">&rarr;</div>
-        <div class="flex-auto" />
+        <div className="ph2" />
+        <div className="ph2 o-0">&larr;</div>
+        <div className="ph2 o-0">&rarr;</div>
+        <div className="flex-auto" />
       </div>
       <div className="flex flex-auto">
         <Sidebar theme={theme} />
