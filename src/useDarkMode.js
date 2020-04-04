@@ -8,9 +8,11 @@ export function useDarkMode() {
     const fn = event => {
       setIsDarkMode(event.matches);
     };
-    mediaQuery.addEventListener("change", fn);
+    // 2020-04-03
+    // Safari still doesn't support addEventListener("change", fn) for this API.
+    mediaQuery.addListener(fn);
     return () => {
-      mediaQuery.removeEventListener("change", fn);
+      mediaQuery.removeListener(fn);
     };
   }, []);
   return isDarkMode;
