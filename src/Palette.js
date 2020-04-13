@@ -23,8 +23,8 @@ const groupedColors = [
   "deepOrange",
   "brown",
   "blueGrey",
-  "grey"
-].map(c => weights.map(w => MC[c][w]));
+  "grey",
+].map((c) => weights.map((w) => MC[c][w]));
 const colors = groupedColors.reduce((a, b) => [...a, ...b], []);
 
 function Palette({ updatePrimaryColor, themeType }) {
@@ -38,7 +38,7 @@ function Palette({ updatePrimaryColor, themeType }) {
               updatePrimaryColor(c);
             }}
             style={{
-              background: c
+              background: c,
             }}
             className={C(
               themeType === "dark" ? "white" : "black",
@@ -58,7 +58,7 @@ Palette.displayName = "Palette";
 
 Palette.propTypes = {
   updatePrimaryColor: PT.func.isRequired,
-  themeType: PT.string.isRequired
+  themeType: PT.string.isRequired,
 };
 
 export default Palette;

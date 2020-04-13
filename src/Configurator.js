@@ -9,7 +9,7 @@ function Configurator({
   themeType,
   primaryColor,
   updatePrimaryColor,
-  updateThemeType
+  updateThemeType,
 }) {
   function onChangeThemeType(event) {
     updateThemeType(event.target.value);
@@ -26,7 +26,7 @@ function Configurator({
     activePresence,
     mentionBadge,
     topNavBG,
-    topNavText
+    topNavText,
   } = theme;
   const slackTheme = [
     columnBG,
@@ -45,9 +45,9 @@ function Configurator({
     activePresence,
     mentionBadge,
     topNavBG,
-    topNavText
+    topNavText,
   ].join(",");
-  const selectAll = event => {
+  const selectAll = (event) => {
     event.target.focus();
     event.target.select();
   };
@@ -155,7 +155,7 @@ Configurator.displayName = "Configurator";
 Configurator.propTypes = {
   theme: PT.object.isRequired,
   updatePrimaryColor: PT.func.isRequired,
-  updateThemeType: PT.func.isRequired
+  updateThemeType: PT.func.isRequired,
 };
 
 export default Configurator;

@@ -12,7 +12,7 @@ function SidebarItem({ index, name, type }) {
     const icon = isOnline ? ONLINE : OFFLINE;
     const className = C("pv1 ph3", "o-70", "cool-sidebar-item");
     const style = {
-      width: WIDTH
+      width: WIDTH,
     };
     return (
       <div style={style} className={className}>
@@ -24,7 +24,7 @@ function SidebarItem({ index, name, type }) {
     const className = C("pv1 ph3", "flex", "cool-sidebar-item");
     const style = {
       opacity: index === 3 || index % 4 === 0 || index % 6 === 0 ? null : "0.7",
-      width: WIDTH
+      width: WIDTH,
     };
     const badge = (
       <div
@@ -66,7 +66,7 @@ SidebarItem.propTypes = {
   index: PT.number.isRequired,
   name: PT.string.isRequired,
   type: PT.oneOf(["person", "channel"]).isRequired,
-  theme: PT.object.isRequired
+  theme: PT.object.isRequired,
 };
 
 export default SidebarItem;

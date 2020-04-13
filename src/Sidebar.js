@@ -11,7 +11,7 @@ const CHANNELS = [
   "qa",
   "frontend",
   "backend",
-  "announcements"
+  "announcements",
 ];
 
 const NAMES = [
@@ -22,7 +22,7 @@ const NAMES = [
   "Saubio Tobian",
   "Candurous Marr",
   "Surro Starr",
-  "Rayf Mantisa"
+  "Rayf Mantisa",
 ];
 
 function Sidebar({ theme }) {
@@ -43,7 +43,7 @@ function Sidebar({ theme }) {
 Sidebar.displayName = "Sidebar";
 
 Sidebar.propTypes = {
-  theme: PT.object.isRequired
+  theme: PT.object.isRequired,
 };
 
 export default Sidebar;

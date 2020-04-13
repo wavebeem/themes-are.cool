@@ -1,25 +1,28 @@
 import React, { useState, useEffect } from "react";
 import tinycolor from "tinycolor2";
+import { lch } from "d3-color";
 
 import Configurator from "./Configurator";
 import Sidebar from "./Sidebar";
 import { useDarkMode } from "./useDarkMode";
 
-function lighten(color, amount) {
-  const color2 = tinycolor(color).lighten(amount);
-  return tinycolor.mix(color2, "white", amount).toHexString();
+function makeHoverColor(c, amount) {
+  const x = lch(c);
+  x.c += 10;
+  x.l += amount;
+  return x.formatHex();
 }
 
-Object.assign(window, { tinycolor });
-
-function withLightness(color, l) {
-  const { h, s } = tinycolor(color).toHsl();
-  return tinycolor({ h, s, l }).toHexString();
+function makeColumnBGColor(c, l) {
+  const x = lch(c);
+  x.c = 10;
+  x.l = l;
+  return x.formatHex();
 }
 
-function colorLightDark(color, light, dark) {
+function pickReadableColor(c, light, dark) {
   // 1 means both colors are identical. 21 means maximum contrast.
-  const contrast = tinycolor.readability(color, light);
+  const contrast = tinycolor.readability(c, light);
   return contrast >= 3 ? light : dark;
 }
 
@@ -36,22 +39,22 @@ function App() {
     themeType === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)";
   const columnBG =
     themeType === "dark"
-      ? withLightness(primaryColor, 15)
-      : withLightness(primaryColor, 95);
+      ? makeColumnBGColor(primaryColor, 15)
+      : makeColumnBGColor(primaryColor, 95);
   const activeItem = primaryColor;
-  const activeItemText = colorLightDark(activeItem, "#ffffff", "#000000");
-  const hoverItem = lighten(columnBG, themeType === "dark" ? 5 : -5);
+  const activeItemText = pickReadableColor(activeItem, "#ffffff", "#000000");
+  const hoverItem = makeHoverColor(columnBG, themeType === "dark" ? 5 : -5);
   const textColor = fg;
   const activePresence = textColor;
   const mentionBadge = "#cd2553";
   const topNavBG = primaryColor;
   const topNavText = activeItemText;
-  const searchBorder = colorLightDark(
+  const searchBorder = pickReadableColor(
     primaryColor,
     "rgba(255, 255, 255, 0.2)",
     "rgba(0, 0, 0, 0.2)"
   );
-  const searchBG = colorLightDark(
+  const searchBG = pickReadableColor(
     primaryColor,
     "rgba(255, 255, 255, 0.1)",
     "rgba(0, 0, 0, 0.05)"
@@ -71,7 +74,7 @@ function App() {
     activePresence,
     mentionBadge,
     topNavBG,
-    topNavText
+    topNavText,
   };
   useEffect(() => {
     const style = document.documentElement.style;

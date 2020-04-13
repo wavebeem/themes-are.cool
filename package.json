@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.2.6",
+    "d3-color": "^1.4.0",
     "material-colors": "^1.2.6",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -14,6 +15,7 @@
   },
   "devDependencies": {
     "npm-check": "^5.9.0",
+    "prettier": "^2.0.4",
     "react-scripts": "^2.1.8"
   },
   "scripts": {
