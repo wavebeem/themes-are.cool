@@ -20,7 +20,6 @@
   },
   "scripts": {
     "upgrade": "npm-check -u",
-    "favicon": "convert favicon/favicon.png public/favicon.ico",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
