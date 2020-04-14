@@ -6,17 +6,22 @@ import Configurator from "./Configurator";
 import Sidebar from "./Sidebar";
 import { useDarkMode } from "./useDarkMode";
 
-function makeHoverColor(c, amount) {
+function makeHoverColor(c, themeType) {
   const x = lch(c);
   x.c += 10;
-  x.l += amount;
+  x.l += themeType === "dark" ? -5 : 5;
   return x.formatHex();
 }
 
-function makeColumnBGColor(c, l) {
+function makeColumnBGColor(c, themeType) {
   const x = lch(c);
-  x.c = 10;
-  x.l = l;
+  if (themeType === "dark") {
+    x.c = 20;
+    x.l = 15;
+  } else {
+    x.c = 10;
+    x.l = 95;
+  }
   return x.formatHex();
 }
 
@@ -39,11 +44,11 @@ function App() {
     themeType === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)";
   const columnBG =
     themeType === "dark"
-      ? makeColumnBGColor(primaryColor, 15)
-      : makeColumnBGColor(primaryColor, 95);
+      ? makeColumnBGColor(primaryColor, themeType)
+      : makeColumnBGColor(primaryColor, themeType);
   const activeItem = primaryColor;
   const activeItemText = pickReadableColor(activeItem, "#ffffff", "#000000");
-  const hoverItem = makeHoverColor(columnBG, themeType === "dark" ? 5 : -5);
+  const hoverItem = makeHoverColor(columnBG, themeType);
   const textColor = fg;
   const activePresence = textColor;
   const mentionBadge = "#cd2553";
