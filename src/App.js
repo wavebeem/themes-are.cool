@@ -6,15 +6,20 @@ import Configurator from "./Configurator";
 import Sidebar from "./Sidebar";
 import { useDarkMode } from "./useDarkMode";
 
-function makeHoverColor(c, themeType) {
-  const x = lch(c);
-  x.c += 10;
-  x.l += themeType === "dark" ? -5 : 5;
+function makeHoverColor(color, themeType) {
+  const x = lch(color);
+  if (themeType === "dark") {
+    x.c += 10;
+    x.l += 10;
+  } else {
+    x.c += 5;
+    x.l -= 5;
+  }
   return x.formatHex();
 }
 
-function makeColumnBGColor(c, themeType) {
-  const x = lch(c);
+function makeColumnBGColor(color, themeType) {
+  const x = lch(color);
   if (themeType === "dark") {
     x.c = 20;
     x.l = 15;
@@ -25,9 +30,9 @@ function makeColumnBGColor(c, themeType) {
   return x.formatHex();
 }
 
-function pickReadableColor(c, light, dark) {
+function pickReadableColor(color, light, dark) {
   // 1 means both colors are identical. 21 means maximum contrast.
-  const contrast = tinycolor.readability(c, light);
+  const contrast = tinycolor.readability(color, light);
   return contrast >= 3 ? light : dark;
 }
 
