@@ -1,3 +1,24 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/689e684a-6461-4981-bac2-80f05d653630/deploy-status)](https://app.netlify.com/sites/themes-are-cool/deploys)
+# themes-are.cool
 
-# <https://themes-are.cool>
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
