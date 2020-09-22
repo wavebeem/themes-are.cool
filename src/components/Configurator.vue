@@ -18,14 +18,13 @@
         @primary-color-changed="$emit('primary-color-changed', $event)"
       />
       <div>
-        <div>[ Color Picker ]</div>
         <!-- <ChromePicker
-          :disableAlpha="true"
+          :disable-alpha="true"
           :colors="primaryColor"
           @input="emit('primary-color-changed', $event)"
         /> -->
-        <div class="db pv3">
-          <h2 class="b f5 mv1">Appearance</h2>
+        <div class="db pb3">
+          <h2 class="b f5 mv0">Appearance</h2>
           <label class="ph2 pv1 br2 db lh-copy">
             <input
               type="radio"
@@ -100,7 +99,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from "vue";
-// import { Chrome as ChromePicker } from "vue-color";
+// import ChromePicker from "vue-color/src/components/Chrome.vue";
 import Palette from "./Palette.vue";
 
 export default defineComponent({
