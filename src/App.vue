@@ -20,8 +20,8 @@
       <Sidebar :theme="theme"></Sidebar>
       <Configurator
         :theme="theme"
-        :themeType="themeType"
-        :primaryColor="primaryColor"
+        :theme-type="themeType"
+        :primary-color="primaryColor"
         @primary-color-changed="primaryColor = $event"
         @theme-type-changed="themeType = $event"
       ></Configurator>
@@ -38,7 +38,7 @@ import useDarkMode from "./useDarkMode";
 import Sidebar from "./components/Sidebar.vue";
 import Configurator from "./components/Configurator.vue";
 
-type ThemeType = "light" | "dark";
+export type ThemeType = "light" | "dark";
 
 interface Theme {
   themeType: string;
@@ -49,6 +49,7 @@ interface Theme {
   searchBG: string;
   columnBG: string;
   primaryColor: string;
+  activeItem: string;
   activeItemText: string;
   hoverItem: string;
   textColor: string;
@@ -147,6 +148,7 @@ export default defineComponent({
         searchBG: searchBG.value,
         columnBG: columnBG.value,
         primaryColor: primaryColor.value,
+        activeItem: primaryColor.value,
         activeItemText: activeItemText.value,
         hoverItem: hoverItem.value,
         textColor: textColor.value,

@@ -13,10 +13,10 @@
       </h2>
     </header>
     <div class="cool-grid flex-auto">
-      <!-- <Palette
-        :themeType="themeType"
-        :primaryColorChanged="$emit('primary-color-changed', $event)"
-      /> -->
+      <Palette
+        :theme-type="themeType"
+        @primary-color-changed="$emit('primary-color-changed', $event)"
+      />
       <div>
         <!-- TODO: Color picker -->
         <!-- <ChromePicker
@@ -101,18 +101,20 @@
 <script lang="ts">
 import { computed, defineComponent } from "vue";
 // import { ChromePicker } from "react-color";
-// import Palette from "./Palette";
+import Palette from "./Palette.vue";
 
 export default defineComponent({
   name: "Configurators",
-  components: {},
+  components: {
+    Palette
+  },
   props: {
     // TODO: Better TS type?
     theme: { type: Object, required: true },
     themeType: { type: String, required: true },
     primaryColor: { type: String, required: true }
   },
-  setup(props, { emit }) {
+  setup(props) {
     const year = new Date().getFullYear();
     const slackTheme = computed(() => {
       const {

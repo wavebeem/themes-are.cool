@@ -8,12 +8,13 @@
   </div>
   <div
     v-if="type === 'channel'"
-    :style="style"
     class="pv1 ph3 flex cool-sidebar-item"
     :data-mode="index === 3 ? 'active' : 'inactive'"
   >
     <div class="flex-auto">
-      <b v-if="index % 4 === 0 || index % 6 === 0" class="fw6"># {{ name }}</b>
+      <b v-if="index % 4 === 0 || index % 6 === 0" class="fw6" :style="style"
+        ># {{ name }}</b
+      >
       <span v-else># {{ name }}</span>
     </div>
     <div
@@ -32,6 +33,7 @@ import { computed, defineComponent } from "vue";
 export default defineComponent({
   name: "SidebarItem",
   props: {
+    // TODO: TS Types
     type: { type: String, required: true },
     index: { type: Number, required: true },
     name: { type: String, required: true },
