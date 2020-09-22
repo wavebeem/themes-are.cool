@@ -1,30 +1,30 @@
 <template>
-  <div className="sans-serif flex flex-column flex-auto min-vh-100">
+  <div class="sans-serif flex flex-column flex-auto min-vh-100">
     <div
-      className="pa2 tc bb b--cool cool-top-nav flex items-center"
-      style='cursor: "default"; userSelect: "none"'
+      class="pa2 tc bb b--cool cool-top-nav flex items-center"
+      style="cursor: default; userSelect: none"
     >
-      <div className="flex-auto"></div>
-      <div className="ph2">&larr;</div>
-      <div className="ph2 o-50">&rarr;</div>
-      <div className="ph2"></div>
-      <div className="pa1 br3 cool-search" style="width: 400px">
+      <div class="flex-auto"></div>
+      <div class="ph2">&larr;</div>
+      <div class="ph2 o-50">&rarr;</div>
+      <div class="ph2"></div>
+      <div class="pa1 br3 cool-search" style="width: 400px">
         Themes Are Cool
       </div>
-      <div className="ph2"></div>
-      <div className="ph2 o-0">&larr;</div>
-      <div className="ph2 o-0">&rarr;</div>
-      <div className="flex-auto"></div>
+      <div class="ph2"></div>
+      <div class="ph2 o-0">&larr;</div>
+      <div class="ph2 o-0">&rarr;</div>
+      <div class="flex-auto"></div>
     </div>
-    <div className="flex flex-auto">
+    <div class="flex flex-auto">
       <Sidebar :theme="theme"></Sidebar>
       <Configurator
         :theme="theme"
         :themeType="themeType"
         :primaryColor="primaryColor"
+        @primaryColorChanged="primaryColor = $event.primaryColor"
+        @themeTypeChanged="themeType = $event.themeType"
       ></Configurator>
-      <!-- TODO: Update primaryColor from Configurator -->
-      <!-- TODO: Update themeType from Configurator -->
     </div>
   </div>
 </template>
@@ -35,6 +35,7 @@ import tinycolor from "tinycolor2";
 import { lch } from "d3-color";
 import "tachyons/css/tachyons.css";
 import useDarkMode from "./useDarkMode";
+import Sidebar from "./components/Sidebar.vue";
 
 type ThemeType = "light" | "dark";
 
@@ -88,7 +89,9 @@ function pickReadableColor(color: string, light: string, dark: string): string {
 
 export default defineComponent({
   name: "App",
-  components: {},
+  components: {
+    Sidebar
+  },
   setup(/* props */) {
     const primaryColor = ref("#1565c0");
     const isDarkMode = useDarkMode();
@@ -226,7 +229,7 @@ body {
   background: var(--cool-hover-item);
 }
 
-.cool-sidebar-item[data-active] {
+.cool-sidebar-item[data-mode="active"] {
   background: var(--cool-active-item);
   color: var(--cool-active-item-text);
 }
