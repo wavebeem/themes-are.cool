@@ -1,6 +1,6 @@
 <template>
-  <div className="min-h-100 pt3 pb3 fw4 br b--cool lh-title cool-sidebar">
-    <div className="o-70 f5 pl3 mb2">Channels</div>
+  <div class="min-h-100 pt3 pb3 fw4 br b--cool lh-title cool-sidebar">
+    <div class="o-70 f5 pl3 mb2">Channels</div>
     <SidebarItem
       v-for="(channel, index) in channels"
       :key="index"
@@ -9,7 +9,7 @@
       :theme="theme"
       type="channel"
     />
-    <div className="o-70 f5 pl3 mb2 mt4">Direct Messages</div>
+    <div class="o-70 f5 pl3 mb2 mt4">Direct Messages</div>
     <SidebarItem
       v-for="(name, index) in names"
       :key="index"

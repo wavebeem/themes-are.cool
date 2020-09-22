@@ -2,26 +2,24 @@
   <div
     v-if="type === 'person'"
     :style="style"
-    className="pv1 ph3 o-70 cool-sidebar-item"
+    class="pv1 ph3 o-70 cool-sidebar-item"
   >
     {{ icon }} {{ name }}
   </div>
   <div
     v-if="type === 'channel'"
     :style="style"
-    className="pv1 ph3 flex cool-sidebar-item"
+    class="pv1 ph3 flex cool-sidebar-item"
     :data-mode="index === 3 ? 'active' : 'inactive'"
   >
-    <div className="flex-auto">
-      <b v-if="index % 4 === 0 || index % 6 === 0" className="fw6"
-        ># {{ name }}</b
-      >
+    <div class="flex-auto">
+      <b v-if="index % 4 === 0 || index % 6 === 0" class="fw6"># {{ name }}</b>
       <span v-else># {{ name }}</span>
     </div>
     <div
       v-if="index % 6 === 0"
       style="minWidth: 25px"
-      className="normal tc br-pill white mr1 f6 cool-badge"
+      class="normal tc br-pill white mr1 f6 cool-badge"
     >
       3
     </div>

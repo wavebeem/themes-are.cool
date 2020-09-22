@@ -22,8 +22,8 @@
         :theme="theme"
         :themeType="themeType"
         :primaryColor="primaryColor"
-        @primaryColorChanged="primaryColor = $event.primaryColor"
-        @themeTypeChanged="themeType = $event.themeType"
+        @primary-color-changed="primaryColor = $event"
+        @theme-type-changed="themeType = $event"
       ></Configurator>
     </div>
   </div>
@@ -36,6 +36,7 @@ import { lch } from "d3-color";
 import "tachyons/css/tachyons.css";
 import useDarkMode from "./useDarkMode";
 import Sidebar from "./components/Sidebar.vue";
+import Configurator from "./components/Configurator.vue";
 
 type ThemeType = "light" | "dark";
 
@@ -90,7 +91,8 @@ function pickReadableColor(color: string, light: string, dark: string): string {
 export default defineComponent({
   name: "App",
   components: {
-    Sidebar
+    Sidebar,
+    Configurator
   },
   setup(/* props */) {
     const primaryColor = ref("#1565c0");
