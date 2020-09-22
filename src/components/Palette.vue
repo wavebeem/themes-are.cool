@@ -3,7 +3,7 @@
     <button
       v-for="(color, index) in colors"
       :key="index"
-      :style="`background: ${color}`"
+      :style="{ background: color }"
       :class="[
         themeType === 'dark' ? 'white' : 'black',
         'bn br0',

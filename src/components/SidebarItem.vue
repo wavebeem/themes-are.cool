@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from "vue";
+import { computed, CSSProperties, defineComponent } from "vue";
 
 export default defineComponent({
   name: "SidebarItem",
@@ -44,15 +44,15 @@ export default defineComponent({
     const ONLINE = "\u25CF";
     const WIDTH = "220px";
     const icon = computed(() => (props.index % 5 <= 2 ? ONLINE : OFFLINE));
-    const style = computed(() => {
-      const decls: string[] = [`width: ${WIDTH}`];
-      if (
-        props.type === "channel" &&
-        (props.index === 3 || props.index % 4 === 0 || props.index % 6 === 0)
-      ) {
-        decls.push(`opacity: 0.7`);
-      }
-      return decls.join(";\n");
+    const style = computed<CSSProperties>(() => {
+      return {
+        width: WIDTH,
+        opacity:
+          props.type === "channel" &&
+          (props.index === 3 || props.index % 4 === 0 || props.index % 6 === 0)
+            ? 0.7
+            : undefined
+      };
     });
     return {
       icon,
