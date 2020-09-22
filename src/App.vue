@@ -97,9 +97,7 @@ export default defineComponent({
   setup(/* props */) {
     const primaryColor = ref("#1565c0");
     const isDarkMode = useDarkMode();
-    const themeType = computed<ThemeType>(() => {
-      return isDarkMode.value ? "dark" : "light";
-    });
+    const themeType = ref<ThemeType>(isDarkMode.value ? "dark" : "light");
     const bg = computed(() => {
       return themeType.value === "dark" ? "#1a1d21" : "#ffffff";
     });
@@ -174,6 +172,9 @@ export default defineComponent({
       style.setProperty("--cool-mention-badge", mentionBadge);
       style.setProperty("--cool-top-nav-bg", topNavBG.value);
       style.setProperty("--cool-top-nav-text", topNavText.value);
+    });
+    watchEffect(() => {
+      themeType.value = isDarkMode.value ? "dark" : "light";
     });
     return {
       theme,
