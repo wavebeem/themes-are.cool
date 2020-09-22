@@ -11,10 +11,13 @@
   "dependencies": {
     "@types/d3-color": "^1.2.2",
     "@types/tinycolor2": "^1.4.2",
+    "@types/vue-color": "^2.4.2",
     "d3-color": "^2.0.0",
+    "material-colors": "^1.2.6",
     "tachyons": "^4.12.0",
     "tinycolor2": "^1.4.1",
-    "vue": "^3.0.0-0"
+    "vue": "^3.0.0-0",
+    "vue-color": "^2.7.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.33.0",

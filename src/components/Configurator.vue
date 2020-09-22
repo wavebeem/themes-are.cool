@@ -18,11 +18,11 @@
         @primary-color-changed="$emit('primary-color-changed', $event)"
       />
       <div>
-        <!-- TODO: Color picker -->
+        <div>[ Color Picker ]</div>
         <!-- <ChromePicker
-          :color="primaryColor"
           :disableAlpha="true"
-          @change="onColorPickerChange"
+          :colors="primaryColor"
+          @input="emit('primary-color-changed', $event)"
         /> -->
         <div class="db pv3">
           <h2 class="b f5 mv1">Appearance</h2>
@@ -100,13 +100,14 @@
 
 <script lang="ts">
 import { computed, defineComponent } from "vue";
-// import { ChromePicker } from "react-color";
+// import { Chrome as ChromePicker } from "vue-color";
 import Palette from "./Palette.vue";
 
 export default defineComponent({
   name: "Configurators",
   components: {
     Palette
+    // ChromePicker
   },
   props: {
     // TODO: Better TS type?
