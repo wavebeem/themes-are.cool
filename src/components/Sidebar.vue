@@ -22,7 +22,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { Theme } from "@/App.vue";
+import { defineComponent, PropType } from "vue";
 import SidebarItem from "./SidebarItem.vue";
 
 const channels = [
@@ -53,8 +54,10 @@ export default defineComponent({
     SidebarItem
   },
   props: {
-    // TODO: Better TS type?
-    theme: { type: Object, required: true }
+    theme: {
+      type: Object as PropType<Theme>,
+      required: true
+    }
   },
   setup() {
     return {

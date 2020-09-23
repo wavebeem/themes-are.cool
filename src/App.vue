@@ -41,7 +41,7 @@ import Configurator from "./components/Configurator.vue";
 
 export type ThemeType = "light" | "dark";
 
-interface Theme {
+export interface Theme {
   themeType: string;
   bg: string;
   fg: string;

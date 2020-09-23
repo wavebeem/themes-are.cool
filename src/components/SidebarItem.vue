@@ -28,16 +28,28 @@
 </template>
 
 <script lang="ts">
-import { computed, CSSProperties, defineComponent } from "vue";
+import { Theme } from "@/App.vue";
+import { computed, CSSProperties, defineComponent, PropType } from "vue";
 
 export default defineComponent({
   name: "SidebarItem",
   props: {
-    // TODO: TS Types
-    type: { type: String, required: true },
-    index: { type: Number, required: true },
-    name: { type: String, required: true },
-    theme: { type: Object, required: true }
+    type: {
+      type: String as PropType<"channel" | "person">,
+      required: true
+    },
+    index: {
+      type: Number,
+      required: true
+    },
+    name: {
+      type: String,
+      required: true
+    },
+    theme: {
+      type: Object as PropType<Theme>,
+      required: true
+    }
   },
   setup(props) {
     const OFFLINE = "\u25CB";

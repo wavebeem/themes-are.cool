@@ -102,7 +102,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from "vue";
+import { Theme, ThemeType } from "@/App.vue";
+import { computed, defineComponent, PropType } from "vue";
 import Palette from "./Palette.vue";
 
 export default defineComponent({
@@ -113,10 +114,18 @@ export default defineComponent({
     // https://v3.vuejs.org/guide/migration/custom-elements-interop.html#autonomous-custom-elements
   },
   props: {
-    // TODO: Better TS type?
-    theme: { type: Object, required: true },
-    themeType: { type: String, required: true },
-    primaryColor: { type: String, required: true }
+    theme: {
+      type: Object as PropType<Theme>,
+      required: true
+    },
+    themeType: {
+      type: String as PropType<ThemeType>,
+      required: true
+    },
+    primaryColor: {
+      type: String,
+      required: true
+    }
   },
   setup(props) {
     const year = new Date().getFullYear();

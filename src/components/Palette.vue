@@ -17,8 +17,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
 import MaterialColors from "material-colors";
+import { ThemeType } from "@/App.vue";
 
 const weights = ["100", "200", "700", "800"] as const;
 const names = [
@@ -47,8 +48,10 @@ const colors = groupedColors.reduce((a, b) => [...a, ...b], []);
 
 export default defineComponent({
   props: {
-    // TODO: TS Types
-    themeType: { type: String, required: true }
+    themeType: {
+      type: String as PropType<ThemeType>,
+      required: true
+    }
   },
   setup() {
     return { colors };
