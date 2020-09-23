@@ -16,7 +16,7 @@
     "material-colors": "^1.2.6",
     "tachyons": "^4.12.0",
     "tinycolor2": "^1.4.1",
-    "vue": "^3.0.0-0"
+    "vue": "^3.0.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.33.0",
