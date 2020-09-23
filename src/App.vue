@@ -33,6 +33,7 @@
 import { computed, defineComponent, ref, watchEffect } from "vue";
 import tinycolor from "tinycolor2";
 import { lch } from "d3-color";
+import "color-picker-element";
 import "tachyons/css/tachyons.css";
 import useDarkMode from "./useDarkMode";
 import Sidebar from "./components/Sidebar.vue";

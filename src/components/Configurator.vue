@@ -18,11 +18,15 @@
         @primary-color-changed="$emit('primary-color-changed', $event)"
       />
       <div>
-        <!-- <ChromePicker
-          :disable-alpha="true"
-          :colors="primaryColor"
-          @input="emit('primary-color-changed', $event)"
-        /> -->
+        <color-picker
+          :style="{
+            '--color-picker-background-color': 'var(--cool-bg)',
+            '--color-picker-color': 'var(--cool-fg)'
+          }"
+          :value="primaryColor"
+          :formats="['hex']"
+          @change="$emit('primary-color-changed', $event.target.value)"
+        ></color-picker>
         <div class="db pb3">
           <h2 class="b f5 mv0">Appearance</h2>
           <label class="ph2 pv1 br2 db lh-copy">
@@ -99,14 +103,14 @@
 
 <script lang="ts">
 import { computed, defineComponent } from "vue";
-// import ChromePicker from "vue-color/src/components/Chrome.vue";
 import Palette from "./Palette.vue";
 
 export default defineComponent({
   name: "Configurators",
   components: {
     Palette
-    // ChromePicker
+    // TODO: How do I tell Vue about <color-picker> the web component?
+    // https://v3.vuejs.org/guide/migration/custom-elements-interop.html#autonomous-custom-elements
   },
   props: {
     // TODO: Better TS type?
