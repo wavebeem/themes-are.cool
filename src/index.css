@@ -111,6 +111,17 @@ body {
   height: 24px;
 }
 
+.cool-palette-item:focus {
+  box-shadow: inset 0 0 0 3px black, inset 0 0 0 4px white;
+}
+
 .chrome-picker {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Nightmare of inline styles and bad accessibility to fix here */
+.chrome-picker span,
+.chrome-picker input {
+  font-family: sans-serif !important;
+  font-size: 1rem !important;
 }
