@@ -1,7 +1,6 @@
-import React from "react";
 import PT from "prop-types";
+import React from "react";
 import { ChromePicker } from "react-color";
-
 import Palette from "./Palette";
 
 function Configurator({

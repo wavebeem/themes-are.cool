@@ -1,6 +1,6 @@
-import React from "react";
-import PT from "prop-types";
 import C from "classnames";
+import PT from "prop-types";
+import React from "react";
 
 const OFFLINE = "\u25CB";
 const ONLINE = "\u25CF";
@@ -11,9 +11,7 @@ function SidebarItem({ index, name, type }) {
     const isOnline = index % 5 <= 2;
     const icon = isOnline ? ONLINE : OFFLINE;
     const className = C("pv1 ph3", "o-70", "cool-sidebar-item");
-    const style = {
-      width: WIDTH,
-    };
+    const style = { width: WIDTH };
     return (
       <div style={style} className={className}>
         {icon} {person}

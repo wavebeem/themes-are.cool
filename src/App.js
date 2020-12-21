@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import tinycolor from "tinycolor2";
 import { lch } from "d3-color";
-
+import React, { useEffect, useState } from "react";
+import tinycolor from "tinycolor2";
 import Configurator from "./Configurator";
 import Sidebar from "./Sidebar";
 import { useDarkMode } from "./useDarkMode";
