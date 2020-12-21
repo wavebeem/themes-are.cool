@@ -1,6 +1,7 @@
 import PT from "prop-types";
-import React from "react";
-import SidebarItem from "./SidebarItem";
+import * as React from "react";
+import SidebarChannel from "./SidebarChannel";
+import SidebarPerson from "./SidebarPerson";
 
 const CHANNELS = [
   "general",
@@ -29,11 +30,11 @@ function Sidebar({ theme }) {
     <div className="min-h-100 pt3 pb3 fw4 br b--cool lh-title cool-sidebar">
       <div className="o-70 f5 pl3 mb2">Channels</div>
       {CHANNELS.map((c, i) => (
-        <SidebarItem theme={theme} type="channel" key={i} index={i} name={c} />
+        <SidebarChannel key={i} index={i} name={c} />
       ))}
       <div className="o-70 f5 pl3 mb2 mt4">Direct Messages</div>
       {NAMES.map((p, i) => (
-        <SidebarItem theme={theme} type="person" key={i} index={i} name={p} />
+        <SidebarPerson key={i} index={i} name={p} />
       ))}
     </div>
   );

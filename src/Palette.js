@@ -1,7 +1,7 @@
 import C from "classnames";
 import MC from "material-colors";
 import PT from "prop-types";
-import React from "react";
+import * as React from "react";
 
 const weights = ["100", "200", "700", "800"];
 const groupedColors = [
