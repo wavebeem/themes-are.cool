@@ -80,6 +80,7 @@ function Configurator({
             <h2 className="b f5 mv1">Appearance</h2>
             <label className={radioClass}>
               <input
+                className="br-pill"
                 type="radio"
                 name="theme-type"
                 value="light"
@@ -92,6 +93,7 @@ function Configurator({
             </label>
             <label className={radioClass}>
               <input
+                className="br-pill"
                 type="radio"
                 name="theme-type"
                 value="dark"
@@ -116,31 +118,34 @@ function Configurator({
               className="border-box w-100 cool-textarea bw1 ba br2 pa2 code"
             />
           </label>
+          <div className="pt2">
+            <button
+              className="active-squish cool-button bn br1 pv2 ph3 f5 b"
+              onClick={() => {
+                navigator.clipboard.writeText(slackTheme);
+              }}
+            >
+              Copy
+            </button>
+          </div>
           <div className="flex-auto">
             <ul className="lh-copy pl3">
               <li>Copy the theme above.</li>
               <li>Send it as a message.</li>
               <li>
-                Click <q>Switch sidebar theme</q>.
+                Click <b>Switch sidebar theme</b>.
               </li>
             </ul>
             <p>Tip: Direct message yourself to store your favorite themes.</p>
-            <p>
-              <a
-                href="https://classic.themes-are.cool"
-                className="cool-badge f5 pv1 ph2 br2 no-underline"
-              >
-                Switch to classic layout
-              </a>
-            </p>
             <footer>
               &copy; {new Date().getFullYear() + " "}
-              <a className="color-inherit b" href="https://www.mockbrian.com">
+              <a
+                className="color-inherit b br2"
+                href="https://www.wavebeem.com"
+              >
                 Brian Mock
               </a>{" "}
-              <span role="img" aria-label="nerd face emoji">
-                🤓
-              </span>
+              <span aria-hidden="true">🤓</span>
             </footer>
           </div>
         </div>

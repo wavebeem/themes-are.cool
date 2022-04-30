@@ -5,13 +5,13 @@ import SidebarPerson from "./SidebarPerson";
 
 const CHANNELS = [
   "general",
-  "video-games",
-  "running",
-  "archery",
-  "qa",
-  "frontend",
-  "backend",
   "announcements",
+  "fun-games",
+  "fun-news",
+  "team-red",
+  "team-blue",
+  "team-green",
+  "team-yellow",
 ];
 
 const NAMES = [
